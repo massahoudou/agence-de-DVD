@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <div class="jumbotron mt-5 text-light inscription_img">
+        <div class="container row ">
+            <div class="col-md-5 my-5">
+                <img src="/img/a9e07b3b-51bc-410e-976f-6245e6921c11_200x200 (2).png" alt="" class="w-75">
+            </div>
+            <div class="col-md-7">
+                <h4>Inscription</h4>
+                <hr class="bg-light">
+
+                {{ form_start(registrationForm) }}
+                {{ form_row(registrationForm.username) }}
+                {{ form_row(registrationForm.plainPassword) }}
+
+                <button class="btn btn-light">Valider</button>
+                {{ form_end(registrationForm) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

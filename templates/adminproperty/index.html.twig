@@ -1,0 +1,46 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Hello AdminpropertyController!{% endblock %}
+
+{% block body %}
+    <div class="container m-5 w-100">
+        <div class="container">
+            <h1 class="alert alert-danger text-secondary text-center">Gérer les DVD </h1>
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message  }}
+                </div>
+            {% endfor %}
+                <table class="table table-striped">
+                   <thead>
+                   <tr>
+                       <td>Titre du film</td>
+                       <td>Origine</td>
+                       <td>Date de création </td>
+                       <td>Actions </td>
+                   </tr>
+                   </thead>
+                    <tbody>
+                    {% for proprity in proprieter %}
+                        <tr>
+                            <td>{{ proprity.titre }}</td>
+                            <td></td>
+                        <td>  {{ proprity.datesortiAt | date('d m-y') }}</td>
+
+                            <td>
+                                <a href="{{ path('adminedit' ,{id: proprity.id }) }}" class="btn btn-secondary">Editer </a>
+                                <form action="{{ path('admindelete', {'id' : proprity.id}) }}" class="d-inline-block" onsubmit="return confirm('Etes vous vraiment sur de vouloir supprimé')">
+                                    <button class="btn btn-danger">Suppimer</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            <div class="text-right">
+                <a href="{{ path('adminnew ') }}" class="btn btn-danger">Ajouter un DVD</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

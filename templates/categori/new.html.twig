@@ -1,0 +1,11 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}New Categori{% endblock %}
+
+{% block body %}
+    <h1>Create new Categori</h1>
+
+    {{ include('categori/_form.html.twig') }}
+
+    <a href="{{ path('categori_index') }}">back to list</a>
+{% endblock %}

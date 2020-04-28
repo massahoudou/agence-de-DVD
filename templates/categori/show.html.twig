@@ -1,0 +1,26 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Categori{% endblock %}
+
+{% block body %}
+    <h1>Categori</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ categori.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ categori.nom }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('categori_index') }}">back to list</a>
+
+    <a href="{{ path('categori_edit', {'id': categori.id}) }}">edit</a>
+
+    {{ include('categori/_delete_form.html.twig') }}
+{% endblock %}

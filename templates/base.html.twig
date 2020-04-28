@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <link href="{{ asset('/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('vendor/fontawesome-free/css/fontawesome.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/agence.css') }}" rel="stylesheet">
+        <script src="{{ asset('/bootstrap/js/bootstrap.min.js') }}"></script>
+        <title>{% block title %}Genius GEEK!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body class="">
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark nav-bg-color fixed-top ">
+        <div class="container">
+            <a class="navbar-brand" href="{{ path('home') }} "><img src="img/a9e07b3b-51bc-410e-976f-6245e6921c11_200x200 (2).png" class="w-75" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto nav-link-color">
+                    <li class="nav-item  ">
+
+                        <a class="nav-link  {% if currentMenu is defined and currentMenu =='currentProprity' %} active  {% endif %} " href="{{ path('property.index') }}">Bibliotheque
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('service') }}">blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="{{path('agenda')}}">Agenda</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link " href="#">A propos</a>
+                    </li>
+
+                    <li class="nav-item l4">
+                        <a class=" btn btn-contact  " href="{{path('contact')}}"> <img src="{{ asset('img/icons8_communication_25px.png') }}" alt="">Contact</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto ">
+                    <li class="nav-item li3">
+                        <a class=" btn btn-ins " href="{{ path('app_register') }}"><img src="{{ asset('img/icons8_user_account_25px.png') }}" alt="">Inscription</a>
+                    </li>
+                    {% if not app.user %}
+                    <li class="nav-item li2">
+                        <a class=" btn  btn-outline-light" href="{{ path('login') }}">connexion</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item li2">
+                        <a class=" btn  btn-outline-light" href="{{ path('logout') }}">déconnexion</a>
+                    </li>
+                    {% endif %}
+
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+</header>
+
+<div class="block">
+    <div class="jumbotron blockbody ">
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </div>
+</div>
+
+
+    </body>
+
+    <!-- Footer -->
+    <footer class="py-5  ">
+        <div class="container">
+            <p class="m-0 text-center text-white"></p>
+        </div>
+        <!-- /.container -->
+</footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</html>

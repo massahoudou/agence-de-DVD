@@ -1,0 +1,41 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Hello AdminpropertyController!{% endblock %}
+
+{% block body %}
+    <div class="container m-5 w-100">
+        <div class="container">
+            <h1 class="alert alert-danger text-secondary text-center">Gérer les catégoris de film </h1>
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message  }}
+                </div>
+            {% endfor %}
+                <table class="table table-striped">
+                   <thead>
+                   <tr>
+                       <td>Nom</td>
+                       <td>Actions </td>
+                   </tr>
+                   </thead>
+                    <tbody>
+                    {% for categori in categoris %}
+                        <tr>
+                            <td>{{ categori.nom }}</td>
+                            <td>
+                                <a href="{{ path('adminedit' ,{id: categori.id }) }}" class="btn btn-secondary">Editer </a>
+                                <form action="{{ path('admindelete', {'id' : categori.id}) }}" class="d-inline-block" onsubmit="return confirm('Etes vous vraiment sur de vouloir supprimé')">
+                                    <button class="btn btn-danger">Suppimer</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            <div class="text-right">
+                <a href="{{ path('adminnew ') }}" class="btn btn-danger">Ajouter un DVD</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

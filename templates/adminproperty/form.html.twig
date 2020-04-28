@@ -1,0 +1,20 @@
+
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="col-md-4">{{ form_row(form.titre) }}</div>
+            <div class="col-md-4"></div>
+            <div class="col-md-3">{{ form_row(form.prix) }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">{{ form_row(form.origine) }}</div>
+            <div class="col-md-5">{{ form_row(form.acteurs) }}</div>
+            <div class="col-md-3">{{ form_row(form.producteur) }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">{{ form_row(form.realisateur) }}</div>
+            <div class="col-md-4">{{ form_row(form.datesorti_at) }}</div>
+            <div class="col-md-2">{{ form_row(form.solde) }}</div>
+        </div>
+        {{ form_widget(form) }}
+        <button type="submit" class="btn btn-primary">{{ button|default('Enregistrer') }}</button>
+        {{ form_end(form ) }}

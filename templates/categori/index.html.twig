@@ -1,0 +1,35 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Categori index{% endblock %}
+
+{% block body %}
+    <h1>Categori index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for categori in categoris %}
+            <tr>
+                <td>{{ categori.id }}</td>
+                <td>{{ categori.nom }}</td>
+                <td>
+                    <a href="{{ path('categori_show', {'id': categori.id}) }}">show</a>
+                    <a href="{{ path('categori_edit', {'id': categori.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('categori_new') }}">Create new</a>
+{% endblock %}

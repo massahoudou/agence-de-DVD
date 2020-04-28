@@ -1,0 +1,203 @@
+body
+{
+
+}
+.li2,.li3
+{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.blockbody
+{
+    margin:4% 15% 0 15%;
+
+
+}
+.block
+{
+    background-image: url("/img/bg2.jpg");
+    background-attachment: fixed;
+    background-size:contain;
+
+}
+header
+{
+    margin-top: -53px;
+}
+.join
+{
+
+
+}
+.left-post-div
+{
+    background-color:#ED5045 ;
+}
+.left-post-div img
+{
+    padding-right: 9px;
+}
+.span1
+{
+    font-size: 20px;
+    color: rgba(255, 248, 237, 0.79);
+    font-style: normal;
+    font-family: "HP Simplified";
+}
+.portion1
+{
+    background: rgba(211, 211, 214, 0.78);
+    border-radius: 5px;
+}
+
+.portion1 span
+{
+    font-family: "HP Simplified";
+    font-size: 16px;
+ padding:10%;
+}
+.portion1 .in_portion1
+{
+    background: #dbd3da;
+
+    padding: 0 10% 0 10%;
+}
+.portion1 div div p
+{
+    font-family:-apple-system;
+    font-weight: 200;
+}
+.in_portion2
+{
+    background: #cee0ff;
+}
+.p1
+{
+
+    margin-top: 15px;
+    border-radius: 5px ;
+}
+.proprieter_shadow
+{
+    padding: 20px;
+}
+.proprieter_shadow img
+{
+
+}
+.text1
+{
+    text-align: center;
+    width: 60%;
+}
+.text1 a
+{
+    font-family:"HP Simplified" ;
+    font-size: 15px;
+}
+.proprieter_shadow img
+{
+    border-radius: 20px;
+    box-shadow: 1px 2px 5px 0  #424242;
+    height: 190px;
+    object-fit: cover;
+}
+.inscription_img
+{
+    background-image: url("/img/krists-luhaers-AtPWnYNDJnM-unsplash.jpg");
+    background-size: cover;
+    box-shadow: 1px 1px 10px 0px black;
+}
+.film
+{
+
+}
+.bg1{
+
+    background-image: url("/img/0001-max.jpg");
+
+
+}
+.bg3
+{
+    background-color: rgba(255, 95, 51, 0.79);
+}
+.bouton1
+{
+    background-color: #ff5f42;
+    padding-right: 4px;
+    padding-left: 4px ;
+    color: white;
+    border-radius: 4px;
+}
+.select
+{
+    background-color: #ff5f42;
+    color: whitesmoke;
+    border: none;
+    border-radius: 15px;
+
+}
+.select:hover
+{
+    background-color: #ff5f42;
+    color: whitesmoke;
+    border: 1px solid #ff9371;
+
+}
+.left-post
+{
+    border-radius: 5px ;
+}
+.left-post-div{
+
+}
+.left-post ul li
+{
+    list-style-type: none;
+    color: black;
+    padding:10px 5px 10px 0;
+}
+.left-post ul li a
+{
+    color: #1b1e21;
+    font-size: 16px;
+
+}
+.nav-bg-color
+{
+    background-color: rgba(0, 0, 0, 0.98);
+}
+.btn-contact,.btn-ins
+{
+    background-color: #ED5045;
+    color: white;
+}
+.btn-contact:hover,.btn-ins:hover
+{
+    color: #d2c0b7;
+background-color: rgba(255, 87, 76, 0.62);
+}
+.btn-contact img
+{
+    padding-right: 5px;
+}
+.span2-div{
+
+    position: absolute;
+    background-color: white;
+    width: 48%;
+    text-align: center;
+    font-family: "HP Simplified";
+    color: #ED5045;
+    border-bottom: 3px solid  #ED5045;
+    box-shadow: 1px 1px 5px 0 rgba(73, 73, 73, 0.8);
+}
+.span2-div span img
+{
+    padding-right: 10px;
+}
+.select option
+{
+
+}
