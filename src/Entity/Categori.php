@@ -24,7 +24,7 @@ class Categori
     private $nom;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Proprietes", inversedBy="categoris")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Proprietes", mappedBy="categoris")
      */
     private $genre;
 

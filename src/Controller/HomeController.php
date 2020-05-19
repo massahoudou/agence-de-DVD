@@ -37,4 +37,11 @@ class HomeController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+    public function search(ProprietesRepository $repository, Request $request)
+    {
+        $proprieter = $repository->findLatest();
+        return $this->render('home/home.html.twig',[
+            'proprieter' => $proprieter,
+        ]);
+    }
 }

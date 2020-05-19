@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr-FR">
 
 <head>
 
@@ -28,15 +28,14 @@
     {% block stylesheets %}{% endblock %}
 
 </head>
-
 <body id="page-top">
 
-<nav class="navbar navbar navbar-dark bg-danger">
-    <h2 class="navbar-brand mr-1" href="index.html">Administration </h2>
+            <nav class="navbar navbar navbar-dark bg-danger">
+                <h2 class="navbar-brand mr-1" href="index.html">Administration </h2>
 
-           <a href="" class="btn btn-outline-light float-rigth"> Deconnexion </a>
+                       <a href="" class="btn btn-outline-light float-rigth"> Deconnexion </a>
 
-</nav>
+            </nav>
         <div id="wrapper">
         
             <ul class="sidebar navbar-nav bg-secondary ">
@@ -46,48 +45,55 @@
                         <span>Acceuil</span>
                     </a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link" href="{{ path('adminnew ') }}">
-                        <i class="fas fa-fw fa-chart-area"></i>
-                        <span>Ajouter un DVD</span></a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('adminhome ') }}">
-                        <i class="fas fa-fw fa-chart-area"></i>
+                        <i class="fas fa-fw fa-list"></i>
                         <span>Liste des DVD</span></a>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="{{ path('adminnew ') }}">
+                        <i class="fas fa-fw fa-newspaper"></i>
+                        <span>Ajouter un DVD</span></a>
+                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('adminnew ') }}">
-                        <i class="fas fa-fw fa-table"></i>
+                        <i class="fas fa-fw fa-discord"></i>
                         <span>Nouveau DVD</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="tables.html">
+                    <a class="nav-link" href="{{ path('categori.index') }}">
                         <i class="fas fa-fw fa-table"></i>
+                        <span> Liste des Categories</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="tables.html">
+                        <i class="fas fa-fw fa-calendar"></i>
                         <span>Agenda</span></a>
                 </li>
+
             </ul>
 
-<div id="content-wrapper">
+            <div id="content-wrapper">
 
-        <div class="container-fluid">
-            {% block body %}{% endblock %}
-            {% block javascripts %}{% endblock %}
+                    <div class="container-fluid">
+                        {% block body %}{% endblock %}
+
+                    </div>
+
+            </div>
         </div>
-        
-</div>
+                <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+                <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+                {% block javascripts %}{% endblock %}
+
 </body>
 
-<!-- Footer -->
+
 <footer class="py-5  ">
     <div class="container">
         <p class="m-0 text-center text-white"></p>
     </div>
-    <!-- /.container -->
+
 </footer>
-
-<!-- Bootstrap core JavaScript -->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<body>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,6 +9,7 @@
         <link href="{{ asset('/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
         <link href="{{ asset('vendor/fontawesome-free/css/fontawesome.min.css') }}" rel="stylesheet">
         <link href="{{ asset('css/agence.css') }}" rel="stylesheet">
+        <link href="{{ asset('select2.min.css') }}">
         <script src="{{ asset('/bootstrap/js/bootstrap.min.js') }}"></script>
         <title>{% block title %}Genius GEEK!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
@@ -30,15 +31,11 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ path('service') }}">blog</a>
+                        <a class="nav-link" href="{{ path('service') }}">Top film </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " href="{{path('agenda')}}">Agenda</a>
                     </li>
-                    <li class="nav-item ">
-                        <a class="nav-link " href="#">A propos</a>
-                    </li>
-
                     <li class="nav-item l4">
                         <a class=" btn btn-contact  " href="{{path('contact')}}"> <img src="{{ asset('img/icons8_communication_25px.png') }}" alt="">Contact</a>
                     </li>
@@ -69,23 +66,13 @@
 <div class="block">
     <div class="jumbotron blockbody ">
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+
     </div>
 </div>
 
-
-    </body>
-
-    <!-- Footer -->
-    <footer class="py-5  ">
-        <div class="container">
-            <p class="m-0 text-center text-white"></p>
-        </div>
-        <!-- /.container -->
-</footer>
-
-<!-- Bootstrap core JavaScript -->
 <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="{{ asset('select2.min.js') }}"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+{% block javascripts %}{% endblock %}
+</body>
 </html>

@@ -3,15 +3,15 @@
 {% block title %}Hello AdminpropertyController!{% endblock %}
 
 {% block body %}
-    <div class="container m-5 w-100">
-        <div class="container">
-            <h1 class="alert alert-danger text-secondary text-center">Gérer les DVD </h1>
+    <div class=" w-100">
+        <div class="">
+            <h1 class=" alert-danger text-secondary text-center h-50">Gérer les DVD </h1>
             {% for message in app.flashes('success') %}
                 <div class="alert alert-success">
                     {{ message  }}
                 </div>
             {% endfor %}
-                <table class="table table-striped">
+                <table class="table table-warning">
                    <thead>
                    <tr>
                        <td>Titre du film</td>

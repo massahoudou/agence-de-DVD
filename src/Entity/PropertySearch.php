@@ -4,6 +4,8 @@ namespace App\Entity ;
 
 
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 class PropertySearch
 {
     /**
@@ -15,6 +17,16 @@ class PropertySearch
      * @var int|null
      */
     private $maxprix ;
+    /**
+     * @var ArrayCollection
+     */
+    private $categoris ;
+
+    public function __construct()
+    {
+        $this->categoris  = new ArrayCollection();
+    }
+
 
     /**
      * @return string|null
@@ -51,5 +63,23 @@ class PropertySearch
         $this->maxprix = $maxprix;
         return $this;
     }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getCategoris(): ArrayCollection
+    {
+        return $this->categoris;
+    }
+
+    /**
+     * @param ArrayCollection $cateogri
+     */
+    public function setCategoris(ArrayCollection $categoris): void
+    {
+        $this->categoris = $categoris;
+    }
+
+
 
 }

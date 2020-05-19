@@ -6,14 +6,31 @@
         <div class=" container">
             <div class="row">
                 <div class="col-md-7">
-                    <div class="row">
+                    <div class=" row">
+                        <div style=" width: 50%;">
+                            <img style="border-radius: 20px ;" class="w-75" src="images/disques/{{ property.filename }}" alt="{{ property.filename }}">
+                            <table class=" my-3 table table-danger">
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Mise à jour : {{ property.datecreationAt | date('d/m/yy') }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td >
+                                        Date de sorti :{{ property.datesortiAt | date }}
+                                    </td>
 
-                        <img class="w-75" src="/img/index7.jpg">
-                        <div class="col-md-5">
-                            <h2 class="display-4">{{ property.titre }}</h2>
-                            <h5 class="">{{ property.datesortiAt | date('d-m y') }}  Mise ajour le {{ property.datecreationAt |  date('d/m/y') }}  </h5>
-                            <h2 class="" style="">{{ property.prix }} F CFA</h2>
-                            <div class="btn btn-outline-danger">Contacter l'agence</div>
+
+                            </table>
+                        </div>
+
+                        <div class="my-5 col-md-4">
+                             <h2 class="disque-text"> Titre : {{ property.titre }}</h2>
+
+                           <h5 class="" style="">  prix : {{ property.prix }} F CFA</h5>
+                            <button id="ouvrir" class="btn btn-danger">Contacter l'agence</button>
+
                         </div>
                     </div>
 
@@ -23,27 +40,33 @@
                     <h2>Caractéristiques du film </h2>
                     <table class="table table-striped">
                         <tr>
-                            <td>Acteurs</td>
+                            <td class="h6">Acteurs</td>
                             <td>{{ property.acteurs }}</td>
                         </tr>
                         <tr>
-                            <td>realisateur</td>
+                            <td class="h6">realisateur</td>
                             <td>{{ property.realisateur }}</td>
                         </tr>
                         <tr>
-                            <td>Categori</td>
-                            <td></td>
+                            <td class="h6">Categori</td>
+                            <td>
+                                {% for categori in property.categoris %}
+
+                                        {{ categori.nom }} ,
+
+                                {% endfor %}
+                            </td>
                         </tr>
                         <tr>
-                            <td>Producteur</td>
+                            <td class="h6">Producteur</td>
                             <td>{{ property.producteur }}</td>
                         </tr>
                         <tr>
-                            <td>Origine</td>
+                            <td class="h6">Origine</td>
                             <td>{{ property.origine }}</td>
                         </tr>
                         <tr>
-                            <td>Description</td>
+                            <td class="h6">Description</td>
                             <td>
                                 <p>
                                     {{ property.description | nl2br }}
@@ -58,17 +81,70 @@
         </div>
 
     </div>
-<div class="container ">
+<div class="arr_plan"></div>
+    <div id="contactform" class="card  commende_form">
+    <div class="card-title alert alert-danger text-center text-dark h4 ">RESERVATION</div>
+        <div class=" h-50 bg-light"><img src="{{ asset('img/a9e07b3b-51bc-410e-976f-6245e6921c11_200x200 (1).png') }}"></div>
+        {{ form_start(form) }}
+        <div>
+            <div class="row">
+                <div class="col">{{ form_row(form.nom) }}</div>
+                <div class="col">{{ form_row(form.prenom) }}</div>
+            </div>
+            <div class="row">
+                <div class="col">{{ form_row(form.telephone) }}</div>
+                <div class="col">{{ form_row(form.email) }}</div>
+            </div>
 
-    <div class=" row">
-
-
-        <div class="col-md-4">
-            <h2> spécificité </h2>
+            {{ form_rest(form) }}
         </div>
+        <div class="form-group">
+            <button class="btn btn-outline-danger">Valider</button> | <div id="fermer" class="btn btn-info">fermer</div>
+        </div>
+        {{ form_end(form) }}
     </div>
+    <div class=" p2 ">
+        <div class="row">
+            <div class=" mx-4 span2-div1">
+                <span class="  "> <img src="{{ asset('img/icons8_dvd_logo_25px.png') }}" alt="">  </span>
 
-</div>
+
+        </div>
+        <div class="my-5  disque " >
+            {% for proprity in propriter %}
+                <div class=" proprieter_shadow">
+                    <div class="div_img ">
+                        {% if proprity.filename %}
+
+                            <img class="" src="images/disques/{{  proprity.filename }}" alt="{{  proprity.filename }}">
+                        {% endif %}
+                    </div>
+                    <div class=" text1">
+                        <a class="text-dark" href="{{ path('propertyshow',{id: proprity.id }) }}" class="">{{ proprity.titre }}</a><br>
+
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+
+    </div>
 
 
 {% endblock %}
+        {% block javascripts %}
+        <script>
+        $(document).ready(function(e) {
+            $("#ouvrir").click(function(e) {
+               $(".arr_plan , .commende_form").css("display" ,"block")
+            });
+
+            $("#fermer , .arr_pplan ").click(function(e) {
+                $(".commende_form , .arr_plan").css({'display':'none'} ,350);
+
+            })
+          
+        });
+</script>
+
+        {% endblock %}

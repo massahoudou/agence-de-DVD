@@ -23,11 +23,6 @@
                         </div>
                     </div>
                 </div>
-                <select  class="form-control col-md-1" name="trie"  id="tri">
-                    <option value="Nom">Nom</option>
-                    <option value="Date">Date</option>
-                    <option value="Numero">Numero</option>
-                </select>
             </div>
             <div class="col">
                 {{ form_end(form) }}
@@ -124,11 +119,15 @@
                                 <span class="  "> <img src="{{ asset('img/icons8_dvd_logo_25px.png') }}" alt="">Dernier Ajouter </span>
                             </div>
                         </div>
-                        <div class="row my-5   " >
+                        <div class="my-5  disque " >
                             {% for proprity in proprieter %}
                                 <div class=" proprieter_shadow">
-                                    <div class=" ">
-                                        <img class="" src="/img/images.jpg">
+                                    <div class="div_img ">
+                                        {% if proprity.filename %}
+                                            <img class="" src="images/disques/{{  proprity.filename }}" alt="{{  proprity.filename }}">
+                                        {% else %}
+                                            <img class="" src="{{ asset('images/disques/empty.jpg') }}" alt="{{  proprity.filename }}">
+                                        {% endif %}
                                     </div>
                                     <div class=" text1">
                                         <a class="text-dark" href="{{ path('propertyshow',{id: proprity.id }) }}" class="">{{ proprity.titre }}</a><br>

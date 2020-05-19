@@ -6,6 +6,7 @@ use App\Entity\PropertySearch;
 use App\Entity\Proprietes;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\Query;
 
 /**
  * @method Proprietes|null find($id, $lockMode = null, $lockVersion = null)
@@ -20,7 +21,15 @@ class ProprietesRepository extends ServiceEntityRepository
         parent::__construct($registry, Proprietes::class);
     }
 
-
+    /**
+     * @return array|Query
+     */
+    public function findAll()
+    {
+            $query = $this->findVisibleQuery();
+            return  $query->getQuery()
+                    ->getResult();
+    }
 
     /**
      * @return Proprietes[]
@@ -65,7 +74,10 @@ class ProprietesRepository extends ServiceEntityRepository
                                  ;
     }
 
-
+    public  function findAction(PropertySearch $search)
+    {
+        $query =  $this->findVisibleQuery();
+    }
     /**
      * @return \Doctrine\ORM\QueryBuilder
      */

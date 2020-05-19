@@ -1,10 +1,16 @@
 {% extends 'adminbase.html.twig'%}
 
 {% block body %}
-    <div class="jumbotron ">
-        <div class="container">
-            <h1 class="text-secondary table-active text-center ">Ajouter un nouveau DVD</h1><br>
-            {{ include ('adminproperty/form.html.twig' , {button: 'Enregistrer'}) }}
+    <div class=" ">
+        <div class="">
+            <h1 class="text-danger alert-warning text-center ">Ajouter un nouveau DVD</h1><br>
+            <div class="alert-success ">
+                <div class="container">
+                    {{ include ('adminproperty/form.html.twig' , {button: 'Enregistrer'}) }}
+                </div>
+
+            </div>
+
         </div>
     </div>
 

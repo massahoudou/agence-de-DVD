@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Categori;
 use App\Entity\PropertySearch;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -27,6 +29,7 @@ class PropertysearchType extends AbstractType
                     'placeholder' => 'Budget max'
                 ]
             ])
+
         ;
     }
 

@@ -2,8 +2,11 @@
 
 namespace App\Form;
 
+use App\Entity\Categori;
 use App\Entity\Proprietes;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,6 +18,11 @@ class ProprietesType extends AbstractType
             ->add('titre',null,[
                 'label'=>'Titre du DVD :'
             ])
+            ->add('Categoris' , EntityType::class,[
+                'class' => Categori::class,
+                'choice_label' => 'nom',
+                'multiple' => true
+                ])
             ->add('acteurs', null ,[
                 'label'=>'Les acteu du film :'
                       ])
@@ -35,6 +43,10 @@ class ProprietesType extends AbstractType
             ])
             ->add('producteur',null ,[
                 'label'=>'Producteur du film :'
+            ])
+            ->add('imagefile',FileType::class,[
+                'required' => true
+
             ])
             ->add('solde')
         ;

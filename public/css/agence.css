@@ -76,30 +76,41 @@ header
 
     margin-top: 15px;
     border-radius: 5px ;
+    width: 70% ;
 }
-.proprieter_shadow
-{
-    padding: 20px;
-}
-.proprieter_shadow img
-{
 
+.disque-text
+{
+    font-family: Roboto;
+    font-weight: bold; ;
+    font-size: 25px;
 }
 .text1
 {
     text-align: center;
-    width: 60%;
+    width: 68%;
 }
 .text1 a
 {
     font-family:"HP Simplified" ;
     font-size: 15px;
 }
+.disque
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.proprieter_shadow .div_img
+{
+    padding:15px;
+}
 .proprieter_shadow img
 {
     border-radius: 20px;
     box-shadow: 1px 2px 5px 0  #424242;
-    height: 190px;
+    height: 150px;
     object-fit: cover;
 }
 .inscription_img
@@ -193,6 +204,17 @@ background-color: rgba(255, 87, 76, 0.62);
     border-bottom: 3px solid  #ED5045;
     box-shadow: 1px 1px 5px 0 rgba(73, 73, 73, 0.8);
 }
+.span2-div1
+{
+
+    background-color: white;
+    width: 100%;
+    text-align: center;
+    font-family: "HP Simplified";
+    color: #ED5045;
+    border-bottom: 3px solid  #ED5045;
+    box-shadow: 1px 1px 5px 0 rgba(73, 73, 73, 0.8);
+}
 .span2-div span img
 {
     padding-right: 10px;
@@ -200,4 +222,44 @@ background-color: rgba(255, 87, 76, 0.62);
 .select option
 {
 
+}
+.commende_form
+{
+    display: none;
+    width: 50%;
+    border-radius: 10px;
+    position: absolute;
+    top: 9%;
+    margin:10% ;
+    background: white;
+    border: 1px solid #ED5045;
+    box-shadow: 0px 2px 15px 0  #ED5045;
+    color: #ED5045 ;
+    padding: 10px;
+
+}
+.commende_form div img
+{
+    width: 50%;
+    position: absolute;
+
+    margin-left: 15%;
+
+}
+.bg
+{
+    background: url("/img/brett-jordan-EIsideS4lTI-unsplash.jpg");
+    background-size: cover;
+}
+.arr_plan
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    display: none;
+    background: rgba(0, 0, 0, 0.73);
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
 }

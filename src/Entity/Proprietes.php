@@ -5,9 +5,17 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Exception;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Entity\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProprietesRepository")
+ * @UniqueEntity("titre")
+ * @Vich\Uploadable()
  */
 class Proprietes
 {
@@ -18,6 +26,19 @@ class Proprietes
      */
     private $id;
 
+    /**
+     * @var string|null
+     * @ORM\Column(type="string" , length=255)
+     */
+    private $filename;
+    /**
+     * @Assert\Image(
+     *     mimeTypes="image/jpeg"
+     * )
+     * @var \Symfony\Component\HttpFoundation\File\File|null
+     * @Vich\UploadableField(mapping="disque_image" , fileNameProperty="filename")
+     */
+    private $imagefile;
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -69,9 +90,15 @@ class Proprietes
     private $solde = false;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Categori", mappedBy="genre")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Categori", inversedBy="Property")
      */
     private $categoris;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $updated_at;
+
     public function __construct()
     {
         $this->datecreation_at = new \DateTime();
@@ -231,4 +258,56 @@ class Proprietes
 
         return $this;
     }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updated_at;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updated_at): self
+    {
+        $this->updated_at = $updated_at;
+
+        return $this;
+    }
+    /**
+     * @return string|null
+     */
+    public function getFilename(): ?string
+    {
+        return $this->filename;
+    }
+
+    /**
+     * @param string|null $filename
+     * @return Proprietes
+     */
+    public function setFilename(?string $filename): Proprietes
+    {
+        $this->filename = $filename;
+        return $this;
+    }
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\File\File|null
+     */
+    public function getImagefile(): ?\Symfony\Component\HttpFoundation\File\File
+    {
+        return $this->imagefile;
+    }
+
+    /**
+     * @param \Symfony\Component\HttpFoundation\File\File|null $imagefile
+     * @return Proprietes
+     */
+    public function setImagefile(?\Symfony\Component\HttpFoundation\File\File $imagefile): Proprietes
+    {
+        $this->imagefile = $imagefile;
+        if ($this->imagefile instanceof UploadedFile)
+        {
+            $this->updated_at = new  \DateTime('now');
+        }
+        return $this;
+    }
+
 }

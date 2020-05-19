@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminCategoriController extends AbstractController
 {
     /**
-     * @Route("/", name="categori_index", methods={"GET"})
+     * @Route("/", name="categori.index", methods={"GET"})
      */
     public function index(CategoriRepository $categoriRepository): Response
     {
@@ -26,7 +26,7 @@ class AdminCategoriController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="categori_new", methods={"GET","POST"})
+     * @Route("/new", name="categori.new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -39,7 +39,7 @@ class AdminCategoriController extends AbstractController
             $entityManager->persist($categori);
             $entityManager->flush();
 
-            return $this->redirectToRoute('categori_index');
+            return $this->redirectToRoute('categori.index');
         }
 
         return $this->render('adminproperty/categori/new.html.twig', [
@@ -51,7 +51,7 @@ class AdminCategoriController extends AbstractController
 
 
     /**
-     * @Route("/{id}/edit", name="categori_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="categori.edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Categori $categori): Response
     {
@@ -61,17 +61,17 @@ class AdminCategoriController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('adminpropertycategori_index');
+            return $this->redirectToRoute('categori.index');
         }
 
-        return $this->render('adminpropertycategori/edit.html.twig', [
+        return $this->render('adminproperty/categori/edit.html.twig', [
             'categori' => $categori,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/{id}", name="categori_delete", methods={"DELETE"})
+     * @Route("/{id}", name="categori.delete", methods={"DELETE"})
      */
     public function delete(Request $request, Categori $categori): Response
     {
@@ -81,6 +81,6 @@ class AdminCategoriController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('adminpropertycategori_index');
+        return $this->redirectToRoute('categori.index');
     }
 }
