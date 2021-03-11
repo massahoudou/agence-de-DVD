@@ -49,6 +49,8 @@ class ProprietesType extends AbstractType
 
             ])
             ->add('solde')
+            ->add('top_film')
+            ->add('newfilm')
         ;
     }
 

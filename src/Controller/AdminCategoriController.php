@@ -17,6 +17,8 @@ class AdminCategoriController extends AbstractController
 {
     /**
      * @Route("/", name="categori.index", methods={"GET"})
+     * @param CategoriRepository $categoriRepository
+     * @return Response
      */
     public function index(CategoriRepository $categoriRepository): Response
     {

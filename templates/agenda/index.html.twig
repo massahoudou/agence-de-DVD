@@ -3,18 +3,60 @@
 {% block title %}Hello AgendaController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<div class=" ">
+    <div class="jumbotron  bg2">
+        <div class="b3">
+            <div class="row justify-content-center">
+                <div class="">
+                        <div class="col">
+                          <h1 class="display-4 text-light agenda_title"> <img src="/img/icons8_playstation_50px.png" alt=""> Evenement <img src="{{ asset('/img/icons8_movie_projector_50px_1.png') }}" alt=""></h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'E:/projects/agence de location de DVD/src/Controller/AgendaController.php'|file_link(0) }}">src/Controller/AgendaController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'E:/projects/agence de location de DVD/templates/agenda/index.html.twig'|file_link(0) }}">templates/agenda/index.html.twig</a></code></li>
-    </ul>
-</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="logo">
+                    <img src="/img/icons8_facebook_25px_1.png" title="GeniusGeek">
+                    <img src="/img/icons8_instagram_25px_1.png" title="@GeniusGeek">
+                    <img src="/img/icons8_whatsapp_25px_1.png" title="+228 93240584">
+
+                </div>
+
+            </div>
+
+        </div>
+
+                 <div class="span3-div">
+                    <span class="  "> Tous les Evenements disponible ici mis a jours 24/24</span>
+                </div>
+            <br><br>
+
+                <div class="table-responsive ">
+                    <table class="table table-striped shadow-sm">
+                        <tr class="agenda_table_title bg-light">
+                                <td class="agenda-td">Annonce</td>
+                                <td class="agenda-td">image</td>
+                                <td class="agenda-td">titre</td>
+                                <td class="agenda-td">date</td>
+                                <td class="agenda-td">decription</td>
+                                <td class="agenda-td">par</td>
+                      </tr>
+                        {% for event in events  %}
+                       <tr class="agenda_table_item">
+                           <td class="text-center agenda_id">{{ event.id }}</td>
+                           <td><img height="30px" src="images/disques/{{ event.filename }}" alt="{{ event.filename }}"></td>
+                           <td>{{ event.nom }}</td>
+                           <td>{{ event.dateAt | date('d/m/y') }}</td>
+                           <td>{{ event.description }}</td>
+                           <td>
+                               <span class="float-right agenda_admin"><img height="10px" src="{{ asset('img/icons8_male_user_25px.png') }}" alt="">Admin </span>
+                           </td>
+                       </tr>
+
+                        {%  endfor %}
+                    </table>
+                </div>
+
 {% endblock %}

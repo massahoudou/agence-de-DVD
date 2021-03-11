@@ -8,6 +8,7 @@
 
         <link href="{{ asset('/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
         <link href="{{ asset('vendor/fontawesome-free/css/fontawesome.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('css/agence.css') }}" rel="stylesheet">
         <link href="{{ asset('select2.min.css') }}">
         <script src="{{ asset('/bootstrap/js/bootstrap.min.js') }}"></script>
@@ -16,7 +17,7 @@
     </head>
     <body class="">
 <header>
-    <nav class="navbar navbar-expand-lg navbar-dark nav-bg-color fixed-top ">
+    <nav class="navbar navbar-expand-lg navbar-dark nav-bg-color nav_color  ">
         <div class="container">
             <a class="navbar-brand" href="{{ path('home') }} "><img src="img/a9e07b3b-51bc-410e-976f-6245e6921c11_200x200 (2).png" class="w-75" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,48 +26,73 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto nav-link-color">
                     <li class="nav-item  ">
-
-                        <a class="nav-link  {% if currentMenu is defined and currentMenu =='currentProprity' %} active  {% endif %} " href="{{ path('property.index') }}">Bibliotheque
+                        <a class="nav-link {% if currentMenu is defined and currentMenu =='currentProprity' %} active  {% endif %} " href="{{ path('property.index') }}">Bibliotheque
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ path('service') }}">Top film </a>
+                        <a class="nav-link  {% if currentMenu is defined and currentMenu =='currentTopfilm' %} active  {% endif %} "  href="{{ path('topfilm') }}">Top film </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="{{path('agenda')}}">Agenda</a>
+                        <a class="nav-link   {% if currentMenu is defined and currentMenu =='currentnewfilm' %} active  {% endif %} " href="{{path('newfilm')}}">new film</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link   {% if currentMenu is defined and currentMenu =='currentAgenda' %} active  {% endif %} " href="{{path('agenda')}}">Agenda</a>
                     </li>
                     <li class="nav-item l4">
-                        <a class=" btn btn-contact  " href="{{path('contact')}}"> <img src="{{ asset('img/icons8_communication_25px.png') }}" alt="">Contact</a>
+                        <form action="" {% if app.user %} onsubmit="Alert('Desoler vous n etes pas connecter :)');return false " {% endif
+                        %}>
+                            <a style="background: linear-gradient(rgba(238, 89, 31, 0.884),rgba(240, 51, 18, 0.938));" class=" btn btn-contact bt   "  href=" {% if app.user %}  {{path('contact',{id: app.user.id }) }} {% else  %} {{path('contact',{id: 1 }) }}  {% endif %} " >
+
+                            <span>
+                                Contact
+                            </span>
+                                <img height="17px" src="{{ asset('img/icons8_communication_25px.png') }}" alt="">
+                            </a>
+                        </form>
+
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto ">
-                    <li class="nav-item li3">
-                        <a class=" btn btn-ins " href="{{ path('app_register') }}"><img src="{{ asset('img/icons8_user_account_25px.png') }}" alt="">Inscription</a>
-                    </li>
+
                     {% if not app.user %}
-                    <li class="nav-item li2">
-                        <a class=" btn  btn-outline-light" href="{{ path('login') }}">connexion</a>
-                    </li>
+                        <li class="nav-item li2">
+                            <a  style="background: linear-gradient(rgba(235, 126, 93, 0.884),rgba(240, 99, 18, 0.938));"class=" btn  btn-orange bt" href="{{ path('login') }}">
+                                <span>connexion</span>
+                                <img height="17px" src="{{ asset('img/icons8_wi-fi_connected_25px.png') }}" alt="">
+                            </a>
+                        </li>
+                        <li class="nav-item li3">
+                            <a  style="background: linear-gradient(rgba(243, 111, 59, 0.884),rgba(240, 51, 18, 0.938));" class=" btn btn-ins bt " href="{{ path('app_register') }}">
+                                <span>Inscription</span>
+                                <img height="17px" src="{{ asset('img/icons8_user_account_25px.png') }}" alt="">
+                            </a>
+                        </li>
                     {% else %}
-                    <li class="nav-item li2">
-                        <a class=" btn  btn-outline-light" href="{{ path('logout') }}">déconnexion</a>
+                          <li class="nav-item dropdown no-arrow active">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           <span  >{{ app.user.username }}</span> <span> |<i class="fas fa-user-circle fa-fw   px-2"></i></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                            
+                            <a href="{{path('profile.edit',{'id': app.user.id })}}" class="dropdown-item" href="#">Modifier Mes info </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="{{ path('logout') }}" style="background: linear-gradient(rgba(236, 76, 12, 0.884),rgba(240, 51, 18, 0.938));" class="dropdown-item text-light " href="#">Hors ligne </a>
+                          
+                        </div>
                     </li>
                     {% endif %}
-
+                  
 
                 </ul>
             </div>
         </div>
     </nav>
-
-
 </header>
 
 <div class="block">
-    <div class="jumbotron blockbody ">
-        {% block body %}{% endblock %}
-
+    <div class="jumbotron    blockbody ">
+            {% block body %}{% endblock %}
     </div>
 </div>
 
@@ -75,4 +101,11 @@
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 {% block javascripts %}{% endblock %}
 </body>
+    <footer class="sticky-footer bg-light">
+        <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+                <span>Copyright © Your Website 2019</span>
+            </div>
+        </div>
+    </footer>
 </html>

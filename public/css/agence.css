@@ -1,7 +1,4 @@
-body
-{
 
-}
 .li2,.li3
 {
     padding-left: 5px;
@@ -9,29 +6,22 @@ body
 }
 .blockbody
 {
-    margin:4% 15% 0 15%;
-
-
+    background-color: #E9ECEF;
+    border-radius: 0;
+    font-family: sans-serif;
+    margin: 0 15% 0 15%;
 }
 .block
 {
-    background-image: url("/img/bg2.jpg");
+    background-image: url("/img/krists-luhaers-AtPWnYNDJnM-unsplash.jpg");
     background-attachment: fixed;
     background-size:contain;
 
 }
-header
-{
-    margin-top: -53px;
-}
-.join
-{
 
-
-}
 .left-post-div
 {
-    background-color:#ED5045 ;
+    background-color: #480F10;
 }
 .left-post-div img
 {
@@ -39,14 +29,14 @@ header
 }
 .span1
 {
-    font-size: 20px;
+    font-size: 16px;
     color: rgba(255, 248, 237, 0.79);
     font-style: normal;
-    font-family: "HP Simplified";
+    font-family: BatmanForeverAlternate;
 }
 .portion1
 {
-    background: rgba(211, 211, 214, 0.78);
+    background: rgba(226, 226, 227, 0.8);
     border-radius: 5px;
 }
 
@@ -81,9 +71,19 @@ header
 
 .disque-text
 {
-    font-family: Roboto;
-    font-weight: bold; ;
-    font-size: 25px;
+
+
+    font-family: BatmanForeverAlternate ;
+    color: #E86A20;
+    font-size:25px;
+    text-transform: uppercase;
+}
+.disque-text2
+{
+    font-family: BatmanForeverAlternate sans-serif;
+    text-transform: uppercase;
+    color: #EA4D47;
+    font-size:18px;
 }
 .text1
 {
@@ -102,33 +102,58 @@ header
     justify-content: space-around;
     flex-wrap: wrap;
 }
+.proprieter_shadow
+{
+
+    animation:slideright 5s
+}
 .proprieter_shadow .div_img
 {
     padding:15px;
 }
-.proprieter_shadow img
+.proprieter_shadow  img
 {
-    border-radius: 20px;
-    box-shadow: 1px 2px 5px 0  #424242;
+    transition: transform ease-in-out .3s;
+    border-radius: 10px 0 10px 0 ;
+    box-shadow: 0px 2px 15px 0  #424242;
     height: 150px;
     object-fit: cover;
 }
-.inscription_img
+.proprieter_shadow img:hover
 {
-    background-image: url("/img/krists-luhaers-AtPWnYNDJnM-unsplash.jpg");
-    background-size: cover;
-    box-shadow: 1px 1px 10px 0px black;
-}
-.film
-{
+    transform: scale(1.1)rotate(10deg);
 
 }
+.login-img
+{
+    background-image: url("/img/felix-mooneeram-evlkOfkQ5rE-unsplash.jpg");
+    background-size: cover;
+    border:2px solid rgba(255, 60, 0, 0.63)(255, 115, 0);
+    border:none;
+}
+.login-img2
+{
+    background-image: url("/img/krists-luhaers-AtPWnYNDJnM-unsplash - Copie.jpg");
+    background-size: cover;
+    border:2px solid rgba(214, 213, 213, 0.63)(255, 115, 0);
+    border:none;
+}
+
 .bg1{
 
-    background-image: url("/img/0001-max.jpg");
-
-
+    background-image: url("/img/bg2.jpg");
+    background-size: cover;
+    border-radius:0px !important;
 }
+.bg2{
+    background-image: url("/img/felix-mooneeram-evlkOfkQ5rE-unsplash.jpg");
+    background-size: cover;
+    border-radius:0px !important;
+}.bg3{
+     background-image: url("/img/felix-mooneeram-evlkOfkQ5rE-unsplash.jpg.jpg");
+     background-size: cover;
+     border-radius:0 !important;
+ }
 .bg3
 {
     background-color: rgba(255, 95, 51, 0.79);
@@ -160,9 +185,7 @@ header
 {
     border-radius: 5px ;
 }
-.left-post-div{
 
-}
 .left-post ul li
 {
     list-style-type: none;
@@ -175,6 +198,7 @@ header
     font-size: 16px;
 
 }
+
 .nav-bg-color
 {
     background-color: rgba(0, 0, 0, 0.98);
@@ -204,6 +228,16 @@ background-color: rgba(255, 87, 76, 0.62);
     border-bottom: 3px solid  #ED5045;
     box-shadow: 1px 1px 5px 0 rgba(73, 73, 73, 0.8);
 }
+.span3-div
+{
+    background-color: #190506;
+    width: 100%;
+    text-align: center;
+    font-family: "HP Simplified";
+    color: #c3b9b9;
+    font-size: 14px;
+    border-bottom: 3px solid  #ED5045;
+}
 .span2-div1
 {
 
@@ -219,30 +253,38 @@ background-color: rgba(255, 87, 76, 0.62);
 {
     padding-right: 10px;
 }
-.select option
-{
 
-}
 .commende_form
 {
     display: none;
     width: 50%;
-    border-radius: 10px;
+    border-radius: 10px 10px 0 0 ;
     position: absolute;
-    top: 9%;
+    top: 4%;
     margin:10% ;
-    background: white;
-    border: 1px solid #ED5045;
-    box-shadow: 0px 2px 15px 0  #ED5045;
+    box-shadow: 0px 2px 25px 0  #ed5045d8;
     color: #ED5045 ;
     padding: 10px;
+    animation: apparition 1s ;
+
+}
+@keyframes apparition  {
+    from
+    {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to
+    {
+        transform: scale(1);
+        opacity: 1;
+    }
 
 }
 .commende_form div img
 {
     width: 50%;
     position: absolute;
-
     margin-left: 15%;
 
 }
@@ -262,4 +304,244 @@ background-color: rgba(255, 87, 76, 0.62);
     width: 100%;
     height: 100%;
     cursor: pointer;
+}
+.bouton
+{
+    background: transparent;
+    border: none;
+}
+.input_ input[type="text"] ,.input_ input[type="number"]
+{
+    border: none;
+    background: rgba(255, 255, 255, 0.91);
+    border-radius: 0;
+    color: rgba(43, 22, 22, 0.73);
+    font-family: "HP Simplified";
+    font-size:14px;
+    text-transform: lowercase;
+}
+.input_ input[type="text"]{ border-bottom:  3px solid #ED5045;color: #ED5045;}
+.input_ input[type="number"]{border-bottom:  3px solid #E87117;color: #E87117;}
+.logo
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+justify-content: center;
+    margin-top: 15px;
+}
+.logo img
+{
+    padding-left:15px ;
+    padding-right:15px;
+
+}
+.btn-orange
+{
+    background-color: #E87117;
+    color:white;
+}
+.btn-orange:hover
+{
+opacity: 45%;
+    color: white;
+}
+.nav_color
+{
+    background-color: rgb(25, 5, 6);
+}
+.bt
+{
+    font-family: "Pricedown Bl"
+    font-weight: 400;
+    font-size: 14px ;
+}
+.table_css
+{
+    font-family: sans-serif;
+    font-size: 13px;
+    width: 60%;
+    border-radius: 20px 0 20px 0 ;
+}
+.ul
+{
+
+    font-family: "HP Simplified Light";
+    font-size: 12px;
+    color: #617177;
+}
+.ul .li
+{
+    padding-left: 0;
+}
+.event_img img
+{
+   border-radius: 2px ;
+    height: 10%;
+}
+.event_img
+{
+    transition: transform ease-in-out .5s;
+    animation: slidedown 5s;
+
+}
+.event_img:hover
+{
+    transform: scale(1.1)rotate(10deg);
+}
+
+.event_text
+{
+    position: relative;
+    font-family: sans-serif;
+    margin-top: -38px;
+    animation: slidedown 5s;
+}
+.event_text .event_item2:hover
+{
+    font-size: 14px;
+    padding:10px 10px 10px 10px;
+    transition: all ease-in-out 1s;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+
+}
+.event_item1
+{
+    color: #ffffff;
+    position: relative;
+    background-color:#ED5045;
+    padding-left:20px;
+    padding-right: 20px;
+    border-radius: 2px;
+    margin-right: 10px;
+    font-size: 13px;
+    animation: slidedown 5s;
+}
+.event_item2
+{
+    background-color: rgb(25, 5, 6);
+    padding:10px 10px 10px 10px;
+    color: whitesmoke;
+    font-weight: bold;
+    font-size: 10px;
+    border-radius: 15px 0 15px 0;
+}
+@keyframes slidedown {
+    from{
+        transform:  translateY(100px);
+        opacity: 0;
+    }
+    to
+    {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+@keyframes slideright {
+    from{
+        transform: translateX(100px);
+        opacity: 0;
+    }
+    to{
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+.agenda
+{
+
+    width: 100%;
+
+}
+.agenda_item
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: #0b2e13;
+    animation: slideright 5s;
+}
+.agenda h4
+{
+    font-family: "HP Simplified" ;
+    color:#EA553C ;
+    text-decoration: underline;
+}
+.agenda_item p
+{
+    font-family: "HP Simplified Light";
+    font-weight: bold;
+}
+.agenda_item span
+{
+    color: #777070;
+    font-size: 12px;
+}
+.agenda_item a
+{
+    font-size: 10px;
+}
+.agenda_title
+{
+    font-family: BatmanForeverAlternate;
+}
+.agenda_table_title
+{
+    font-size: 16px ;
+    font-family: "HP Simplified Light";
+    text-transform: uppercase;
+    color: #EA4D47;
+    text-align:center;
+}
+.agenda_table_title td
+{
+    background: white;
+}
+.agenda_id
+{
+    background:#E86A20 ;
+    color: white;
+    font-weight: bold;
+}
+.agenda_table_item
+{
+    font-size: 13px;
+    color:#737073;
+}
+.agenda_admin
+{
+    color: #EA4D47;
+    font-size: 10px;
+}
+.btn-search
+{
+    background-color: #e86a20;
+    padding: 5px 20px 5px 20px;
+    transition: all ease-in 1s;
+}
+.btn-search:hover
+{
+  animation: rotate 2s ;
+
+}
+.btn2
+{
+   
+}
+@keyframes rotate {
+    from
+    {
+        transform: scale(1.2) rotate(360deg);
+        border-radius: 0;
+        color: #EA4D47;
+    }
+    to
+    {
+        transform: scale(1.1) rotate(0deg);
+        border-radius: 0;
+        color: #EA4D47;
+    }
+
 }

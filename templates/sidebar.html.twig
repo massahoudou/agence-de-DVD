@@ -1,0 +1,59 @@
+<div class=" col-md-3 mt-3">
+
+    <div class=" bg-light left-post"  style="background: linear-gradient(white,45%rgba(148, 134, 131, 0.918))">
+        <div class="left-post-div">
+            <span class="span1 mx-2 ">   <img height="15px" src="{{ asset('img/icons8_navigation_pane_25px_1.png') }}" alt="">Navigation </span>
+        </div>
+
+        <div class=" my-4">
+            <ul class=" ">
+                <li class="nav-item"><img height="15px" src="{{ asset('img/icons8_forward_20px.png') }}" alt=""><a class="nav-item" href="{{ path('property.index') }}">Tout les films</a></li>
+                <li class="nav-item"><img height="15px" src="{{ asset('img/icons8_forward_20px.png') }}" alt=""><a class="nav-item" href="{{ path('topfilm') }}">Top film</a></li>
+                <li class="nav-item"><img height="15px" src="{{ asset('img/icons8_forward_20px.png') }}" alt=""><a class="nav-item" href="{{ path('agenda') }}">Agenda</a></li>
+                <li class="nav-item"><img height="15px" src="{{ asset('img/icons8_forward_20px.png') }}" alt=""><a class="nav-item" href="{{ path('newfilm') }}">New film </a></li>
+                <li class="nav-item">
+                    <form action="" {% if app.user %} onsubmit="Alert('Desoler vous n etes pas connecter :)');return false " {% endif
+                    %}>
+                        <img height="15px" src="{{ asset('img/icons8_forward_20px.png') }}" alt="">
+                        <a class=" btn text-light" {% if app.user %} href="{{path('contact',{id: app.user.id }) }}}}" {% else  %} href="{{path('contact',{id: 1 }) }}}} {% endif %}" style="background: linear-gradient(rgba(238, 89, 31, 0.884),rgba(240, 51, 18, 0.938));">
+
+                        <span>
+                                Contact-nous
+                            </span>
+                        <img height="17px" src="{{ asset('img/icons8_communication_25px.png') }}" alt="">
+                        </a>
+                    </form>
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="bg-light left-post">
+        <div class="left-post-div">
+            <span class="span1 mx-2 my-2"><img height="15px" src="{{ asset('img/icons8_cinema_25px.png') }}" alt="">Evenement</span>
+        </div>
+
+        <div class="">
+         <a href=""class="btn text-light"  style="background: linear-gradient(rgba(236, 76, 12, 0.884),rgba(240, 51, 18, 0.938));
+         border-radius:3ps;
+         padding: 5px 15px 5px 15px;
+         text-decoration:none;
+         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.548);">Plus..</a> 
+            {% for event in events %}
+                <div class=" my-2 ">
+                    <a href="{{ path('agenda') }}" class="float-right event_item1"><span>{{ event.nom }}</span> <img height="15px" class="float-right" src="{{ asset('/img/icons8_tag_window_25px.png') }}" alt=""></a>
+                    <div class="event_img text-center   ">
+                        <a href="{{ path('agenda') }}"><img   class="col-md mx-2" src="images/disques/{{  event.filename }}" alt="{{  event.nom }}"></a>
+                    </div>
+                    <div class="event_text">
+                        <a href="" class="event_item2"><span><img height="15px" src="{{ asset('/img/icons8_alarm_clock_25px.png') }}" alt="">
+                                <span>{{ event.dateAt | date() }}</span></span></a>
+                    </div>
+                </div>
+                <br>
+                <hr>
+            {% endfor %}
+     
+        </div>
+    </div>
+</div>

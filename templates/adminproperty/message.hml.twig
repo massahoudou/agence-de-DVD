@@ -1,0 +1,57 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block body %}
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Listing des Contactants</li>
+    </ol>
+    <div class="">
+        <h1 class="alert bg-primary text-secondary text-light h-50 h4">Contacts </h1><br>
+        <div class=" ">
+            <div class=" ">
+                <div class="">
+                    {% for message in app.flashes('success') %}
+                        <div class="alert alert-success">
+                            {{ message  }}
+                        </div>
+                    {% endfor %}
+                    <table class=" table table-striped">
+                        <thead>
+                        <tr class="">
+                            <td>N°</td>
+                            <td class="text-danger">Nom</td>
+                            <td class="text-warning">Téléphone </td>
+                            <td class="text-success">Email </td>
+                            <td class="">Méssage</td>
+                            <td>supprimer</td>
+                        </tr>
+                        </thead>
+                        <tbody class="table-dark">
+                        {% for message in messages %}
+                            <tr>
+                                <td>{{ message.id }}</td>
+                                <td>{{ message.iduser.username }}</td>
+                                <td>{{ message.iduser.telephone}} </td>
+                                <td>{{ message.iduser.email }}</td>
+                                <td>{{ message.message }}</td>
+                                <td class="">
+                                    <form action="{{ path('contact.delete', {'id' : message.id}) }}" class="d-inline-block" onsubmit="return confirm('Etes vous vraiment sur de vouloir supprimé')">
+                                        <button class="btn text-danger"><i class="fa fa-trash"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

@@ -2,6 +2,12 @@
 
 {% block body %}
 
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="#">Acceuil</a>
+    </li>
+    <li class="breadcrumb-item active">Bienvenu </li>
+</ol>
     <div class="row">
         <div class="col-xl-3 col-sm-6 mb-3">
             <div class="card text-white bg-primary o-hidden h-100">
@@ -9,10 +15,10 @@
                     <div class="card-body-icon">
                         <i class="fas fa-fw fa-comments"></i>
                     </div>
-                    <div class="mr-5">26 New Messages!</div>
+                    <div class="mr-5">{{ message.messg }}  Messages!</div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="#">
-                    <span class="float-left">View Details</span>
+                <a href="{{path('reservation.list')}}" class="card-footer text-white clearfix small z-1" >
+                    <span class="float-left">voir les  Details</span>
                     <span class="float-right">
                   <i class="fas fa-angle-right"></i>
                 </span>
@@ -25,10 +31,10 @@
                     <div class="card-body-icon">
                         <i class="fas fa-fw fa-list"></i>
                     </div>
-                    <div class="mr-5">11 New Tasks!</div>
+                    <div class="mr-5"> {{ dvd.dvd }} Disque poster!</div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="#">
-                    <span class="float-left">View Details</span>
+                <a href=" {{ path('acceuil') }}" >
+                    <span class="float-left">Voir les Details</span>
                     <span class="float-right">
                   <i class="fas fa-angle-right"></i>
                 </span>
@@ -41,10 +47,10 @@
                     <div class="card-body-icon">
                         <i class="fas fa-fw fa-shopping-cart"></i>
                     </div>
-                    <div class="mr-5">123 New Orders!</div>
+                    <div class="mr-5">{{reservation.reserv }} Reservation !</div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="#">
-                    <span class="float-left">View Details</span>
+                <a class="card-footer text-white clearfix small z-1" href="{{path('reservation.list')}}">
+                    <span class="float-left">Voir les  Details</span>
                     <span class="float-right">
                   <i class="fas fa-angle-right"></i>
                 </span>
@@ -57,10 +63,10 @@
                     <div class="card-body-icon">
                         <i class="fas fa-fw fa-life-ring"></i>
                     </div>
-                    <div class="mr-5">13 New Tickets!</div>
+                    <div class="mr-5"> Evenement!</div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="#">
-                    <span class="float-left">View Details</span>
+                <a class="card-footer text-white clearfix small z-1" href="{{ path('event.list') }}">
+                    <span class="float-left">Voir les Details</span>
                     <span class="float-right">
                   <i class="fas fa-angle-right"></i>
                 </span>
@@ -68,6 +74,47 @@
             </div>
         </div>
     </div>
-
-
+    <div class="card mb-3">
+        <div class="card-header">
+          Utilisateur 
+            </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered  text-light" id="dataTable" width="100%" cellspacing="0" >
+              <thead>
+                <tr class="h6">
+                    <th class="text-primary">Numero</th>
+                    <th class="text-warning"> Nom d'utilisteur</th>
+                    <th class="text-warning"> Email</th>
+                    <th class="text-success">Roles </th>
+                    <th class="text-danger">Editer </th>
+                    <th class="text-danger">Supp </th>
+                </tr>
+              </thead>
+              <tbody class="">
+                {% for user in users %}
+                <tr>
+                    <td class="h6 bg-dark">{{ user.id }}</td>
+                    <td class="h6 bg-dark">{{ user.username }}</td>
+                    
+                <td class="text-dark">{% for role in user.roles %}
+                    {% if role =="ROLE_ADMIN" %}
+                        Admin
+                    {% else  %}
+                        Utilisateur
+                    {% endif %}
+                    {% endfor %}</td>
+                    <td>
+                        <a href="{{ path('user.edit' ,{'id': user.id }) }}" class="btn text-success"><i class="fa fa-edit"></i> </a>
+                        
+                    </td>
+                    <td><form action="{{ path('user.delete', {'id' : user.id}) }}" class="d-inline-block" onsubmit="return confirm('Etes vous vraiment sur de vouloir supprimé')">
+                        <button class="btn text-danger "><i class="fa fa-trash "></i></button>
+                    </form></td>
+                </tr>
+            {% endfor %}
+             </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base1.html.twig' %}
+
+{% block body %}
+{% for message in app.flashes('success') %}
+<div class="alert alert-success">
+    {{ message  }}
+</div>
+{% endfor %}    
+    <div class="jumbotron mt-5 text-light login-img2">
+        <div class="container row ">
+            <div class="col-md-5 my-5">
+
+                <img src="/img/a9e07b3b-51bc-410e-976f-6245e6921c11_200x200 (2).png" alt="" class="w-75">
+                <p>Genius geek pour mieux vous servire en <br>terme de cinématographie
+                numero au Togo et <br> dans la sous region</p>
+                <ul class="text-secondary">
+                    <li>Pour mieux vous servire </li>
+                    <li>une garanti assuré</li>
+                    <li> Un traitement de client fiable</li>
+                    <li> Un service apres vente</li>
+                </ul>
+                <div>
+                    <div class="row">
+                        <img src="" alt="">
+                        <img src="" alt="">
+                        <img src="" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <h4>Formulair de Contact </h4>
+                <hr class="bg-light">
+{% if app.user %}
+                {{ include('home/_formmessage.html.twig') }}
+{% else %}
+        <div class="display-4">Veuiller vous connecter pour nous contacter </div>
+        <li class="nav-item li2">
+            <a  style="background: linear-gradient(rgba(235, 126, 93, 0.884),rgba(240, 99, 18, 0.938));"class=" btn  btn-orange bt" href="{{ path('login') }}">
+                <span>connexion</span>
+                <img height="17px" src="{{ asset('img/icons8_wi-fi_connected_25px.png') }}" alt="">
+            </a>
+        </li>
+{% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock%}

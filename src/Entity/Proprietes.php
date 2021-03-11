@@ -99,6 +99,24 @@ class Proprietes
      */
     private $updated_at;
 
+
+    /**
+     * @ORM\Column(type="boolean", options={"default":false})
+     */
+    private $newfilm;
+
+
+    /**
+     * @ORM\Column(type="boolean", options={"default":false})
+     */
+    private $top_film;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class)
+     */
+    private $iduser;
+
+
     public function __construct()
     {
         $this->datecreation_at = new \DateTime();
@@ -299,6 +317,7 @@ class Proprietes
     /**
      * @param \Symfony\Component\HttpFoundation\File\File|null $imagefile
      * @return Proprietes
+     * @throws Exception
      */
     public function setImagefile(?\Symfony\Component\HttpFoundation\File\File $imagefile): Proprietes
     {
@@ -307,6 +326,43 @@ class Proprietes
         {
             $this->updated_at = new  \DateTime('now');
         }
+        return $this;
+    }
+
+    public function getNewfilm(): ?bool
+    {
+        return $this->newfilm;
+    }
+
+    public function setNewfilm(?bool $newfilm): self
+    {
+        $this->newfilm = $newfilm;
+
+        return $this;
+    }
+
+
+    public function getTopFilm(): ?bool
+    {
+        return $this->top_film;
+    }
+
+    public function setTopFilm(bool $top_film): self
+    {
+        $this->top_film = $top_film;
+
+        return $this;
+    }
+
+    public function getIduser(): ?User
+    {
+        return $this->iduser;
+    }
+
+    public function setIduser(?User $iduser): self
+    {
+        $this->iduser = $iduser;
+
         return $this;
     }
 

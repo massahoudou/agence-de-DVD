@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les biens !{% endblock %}
+
+{% block body %}
+<div class=" ">
+    <div class="jumbotron  bg2">
+        <div class="b3">
+            <div class="row justify-content-center">
+                <div class="">
+                    <div class="col">
+                        <h1 class="display-4 text-light agenda_title"> <img src="{{ asset('/img/icons8_star_filled_50px_1.png') }}" alt=""> Tops films <img src="{{ asset('/img/icons8_star_filled_50px_1.png') }}" alt=""></h1>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="logo">
+                <img src="/img/icons8_facebook_25px_1.png" title="GeniusGeek">
+                <img src="/img/icons8_instagram_25px_1.png" title="@GeniusGeek">
+                <img src="/img/icons8_whatsapp_25px_1.png" title="+228 93240584">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+    <div class="row ">
+       {{ include('sidebar.html.twig') }}
+
+        <div class=" p1 ">
+            <div class="row">
+                <div class=" mx-4 span3-div">
+                    <span class="  "> <img height="20px" src="{{ asset('img/icons8_dvd_logo_25px.png') }}" alt=""> <span>Tops des films</span> </span>
+                </div>
+            </div>
+            <div class="my-5  disque " >
+                {% for proprity in proprieter %}
+                    <div class=" proprieter_shadow">
+                        <div class="div_img ">
+                            {% if proprity.filename %}
+                                <img class="" src="images/disques/{{  proprity.filename }}" alt="{{  proprity.filename }}">
+                            {% else %}
+                                <img class="" src="{{ asset('images/disques/empty.jpg') }}" alt="{{  proprity.filename }}">
+                            {% endif %}
+                        </div>
+                        <div class=" text1">
+                            <a class="text-dark" href="{% if app.user %} {{ path('propertyshow',{id: proprity.id,user: app.user.id }) }} {% else %}  {{ path('propertyshow',{id: proprity.id,user: 1 }) }} {% endif %}" class="">{{ proprity.titre }}</a><br>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endblock %}

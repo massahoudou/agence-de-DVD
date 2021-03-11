@@ -1,22 +1,31 @@
-{% extends 'base.html.twig' %}
+{% extends 'base1.html.twig' %}
 
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <div class="jumbotron mt-5 text-light inscription_img">
+    <div class="jumbotron mt-5 text-light login-img">
         <div class="container row ">
             <div class="col-md-5 my-5">
                 <img src="/img/a9e07b3b-51bc-410e-976f-6245e6921c11_200x200 (2).png" alt="" class="w-75">
+                <p>Genius geek pour mieux vous servire en <br>terme de cinématographie
+                    numero au Togo et <br> dans la sous region</p>
+                <ul class="text-secondary">
+                    <li>Pour mieux vous servire </li>
+                    <li>une garanti assuré</li>
+                    <li> Un traitement de client fiable</li>
+                    <li> Un service apres vente</li>
+                </ul>
             </div>
             <div class="col-md-7">
                 <h4>Inscription</h4>
                 <hr class="bg-light">
 
                 {{ form_start(registrationForm) }}
-                {{ form_row(registrationForm.username) }}
-                {{ form_row(registrationForm.plainPassword) }}
-
-                <button class="btn btn-light">Valider</button>
+                {{ form_row(registrationForm.username , {'attr':{'label':'Nom d utilisateur'}}) }}
+                {{form_row(registrationForm.email , {'attr':{'label':'Adresse mail'}})}}
+                {{form_row(registrationForm.telephone , {'attr':{'label':'Téléphone'}})}}
+                {{  form_widget(registrationForm)}}
+                <button style="background: linear-gradient(rgba(243, 111, 59, 0.884),rgba(240, 51, 18, 0.938));" class="btn text-light">Valider</button>
                 {{ form_end(registrationForm) }}
             </div>
         </div>

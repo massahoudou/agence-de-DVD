@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ContactController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+
+    <div class="h5">Demande de résèrvation {{ contact.proprietes.titre }}</div>
+    <div>Une nouvvelle personne souhaite obtenir une résèrvation du DVD {{ contact.proprietes.titre }}</div>
+    <h1>Hello {{ controller_name }}! ✅</h1>
+    <table class="table-striped">
+        <tr>
+            <td>Nom du DvD</td>
+            <td><a href="{{ url('propertyshow',{id: contact.proprietes.id})}}">{{ contact.proprietes.titre }}</a></td>
+        </tr>
+        <tr>
+            <td>Prénom</td>
+            <td>{{ contact.prenom }}</td>
+        </tr>
+        <tr>
+            <td>Nom</td>
+            <td>{{ contact.nom }}</td>
+        </tr>
+        <tr>
+            <td>Téléphone</td>
+            <td>{{ contact.telephone }}</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>{{ contact.email }}</td>
+        </tr>
+        <tr>
+            <td>Message</td>
+            <td>{{ contact.message | nl2br }}</td>
+        </tr>
+    </table>
+</div>
+{% endblock %}

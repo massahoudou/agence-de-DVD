@@ -3,154 +3,72 @@
 {% block title %}Les biens !{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-    <div class=" ">
-        <div class="jumbotron  bg1">
-            <div class="b3">
-                <div class="row ">
-                    <div class="col-md-3">
-                        <span class="text-light span1">Bibliotheque</span>
-                    </div>
-                    <div class="">
-                        {{ form_start(form) }}
-                        <div class="form-row">
-                            <div class="col-md-5">
-                                {{ form_row(form.titre) }}
-                            </div>
-                            <div class="col-md-4">
-                                {{ form_row(form.maxprix) }}
-                            </div>
-                            <div class="col">
-                                <button type="submit"  class="btn btn-primary">Rechercher</button>
-                            </div>
+<div class=" ">
+    <div class="jumbotron  bg1">
+        <div class="b3">
+            <div class="row justify-content-center">
+                <div class="">
+                    {{ form_start(form) }}
+                    <div class="form-row input_">
+                        <div class="col-md-6">
+                            {{ form_row(form.titre) }}
                         </div>
-                        {{ form_end(form) }}
+                        <div class="col-md-4">
+                            {{ form_row(form.maxprix) }}
+                        </div>
+                        <div class="col">
+                            <button type="submit"  class="btn btn-contact "><img src="{{ asset('img/icons8_search_20px.png') }}" alt=""><span></span></button>
+                        </div>
                     </div>
-                    <select  class="form-control col-md-1" name="trie"  id="tri">
-                        <option value="Nom">Nom</option>
-                        <option value="Date">Date</option>
-                        <option value="Numero">Numero</option>
-                    </select>
                 </div>
-                <div class="col">
-                    <div class="float-left col-md-5">
-                        <img src="/img/icons8_facebook_old_40px.png" title="GeniusGeek">
-                        <img src="/img/icons8_telegram_app_40px.png" title="@GeniusGeek">
-                        <img src="/img/icons8_whatsapp_40px.png" title="+228 93240584">
+            </div>
+            <div class="col">
+                {{ form_end(form) }}
+                <div class="logo">
+                    <img src="/img/icons8_facebook_25px_1.png" title="GeniusGeek">
+                    <img src="/img/icons8_instagram_25px_1.png" title="@GeniusGeek">
+                    <img src="/img/icons8_whatsapp_25px_1.png" title="+228 93240584">
 
-                    </div>
-                    <a href="" class="btn btn-outline-warning">Prendre contact</a>
                 </div>
 
             </div>
 
-
-
         </div>
+
+
+
+    </div>
   <span class="span1"> </span>
     <div class="row ">
-        <div class=" col-md-3 mt-3">
+       {{ include('sidebar.html.twig') }}
 
-            <div class=" bg-light left-post">
-                <div class="left-post-div">
-                    <span class="span1 mx-2 ">   <img src="{{ asset('img/icons8_navigation_pane_25px_1.png') }}" alt="">Navigation </span>
-                </div>
-
-                <div class=" my-4">
-                    <ul class=" ">
-                        <li class="nav-item"><img src="{{ asset('img/icons8_forward_20px.png') }}" alt=""><a class="nav-item" href="">Top film</a></li>
-                        <li class="nav-item"><img src="{{ asset('img/icons8_forward_20px.png') }}" alt=""><a class="nav-item" href="">Tout les films</a></li>
-                        <li class="nav-item"><img src="{{ asset('img/icons8_forward_20px.png') }}" alt=""><a class="nav-item" href="">contactez nous</a></li>
-                    </ul>
+        <div class=" p1 ">
+            <div class="row">
+                <div class=" mx-4 span3-div">
+                    <span class="  "> <img src="{{ asset('img/icons8_dvd_logo_25px.png') }}" alt=""> <span class="span1">Bibliothèque</span> </span>
                 </div>
             </div>
-            <div class=" bg-light left-post">
-                <div class="left-post-div">
-                    <span class="span1 mx-2 "><img src="{{ asset('img/icons8_filter_25px_1.png') }}" alt="">Film par genre  </span>
-                </div>
-
-                <div class="form-group my-4">
-                    <ul class="sidebar ">
-                        <li class="nav-item"><img src="{{ asset('img/icons8_forward_20px.png') }}" alt=""><a class="nav-item" href="">Action </a></li>
-                        <li class="nav-item"><img src="{{ asset('img/icons8_forward_20px.png') }}" alt=""><a class="nav-item" href="">Animation</a></li>
-                        <li class="nav-item"><img src="{{ asset('img/icons8_forward_20px.png') }}" alt=""><a class="nav-item" href="">Aventure</a></li>
-                        <li class="nav-item"><img src="{{ asset('img/icons8_forward_20px.png') }}" alt=""><a class="nav-item" href="">Drame</a></li>
-
-                    </ul>
-                </div>
-            </div>
-
-            <div class="bg-light left-post">
-                <div class="left-post-div">
-                    <span class="span1 mx-2 my-2"><img src="{{ asset('img/icons8_cinema_25px.png') }}" alt="">Evenement</span>
-                </div>
-
-                <hr class="hr">
-                <div class="">
-                    <div class=" my-3 ">
-                        <img src="/img/index7.jpg" class="w-25 float-left mx-2" alt="">
-                        <p>
-                            <a href="">jetli </a><br>
-                            Aujourdhui a 17h00
-                        </p>
-
-                    </div>
-                    <div class=" my-3 ">
-                        <img src="/img/index7.jpg" class="w-25 float-left mx-2" alt="">
-                        <p>
-                            <a href="">jetli </a><br>
-                            Aujourdhui a 17h00
-                        </p>
-
-                    </div>
-                    <div class=" my-3 ">
-                        <img src="/img/index7.jpg" class="w-25 float-left mx-2" alt="">
-                        <p>
-                            <a href="">jetli </a><br>
-                            Aujourdhui a 17h00
-                        </p>
-
-                    </div>
-                </div>
-            </div>
-            <div class=" alert alert-danger">
-                <span><h3>Promotion </h3></span>
-                <div class="div">
-
-                </div>
-            </div>
-        </div>
-
-            <div class=" p1 ">
-                <div class="row">
-                    <div class=" mx-4 span2-div">
-                        <span class="  "> <img src="{{ asset('img/icons8_dvd_logo_25px.png') }}" alt="">Dernier Ajouter </span>
-                    </div>
-                </div>
-                <div class="my-5  disque " >
-                    {% for proprity in proprieter %}
-                        <div class=" proprieter_shadow">
-                            <div class="div_img ">
-                                {% if proprity.filename %}
-                                    <img class="" src="images/disques/{{  proprity.filename }}" alt="{{  proprity.filename }}">
-                                {% else %}
-                                    <img class="" src="{{ asset('images/disques/empty.jpg') }}" alt="{{  proprity.filename }}">
-                                {% endif %}
-                            </div>
-                            <div class=" text1">
-                                <a class="text-dark" href="{{ path('propertyshow',{id: proprity.id }) }}" class="">{{ proprity.titre }}</a><br>
-
-                            </div>
+            <div class="my-5  disque " >
+                {% for proprity in proprieter %}
+                    <div class=" proprieter_shadow">
+                        <div class="div_img ">
+                            {% if proprity.filename %}
+                                <img class="" src="images/disques/{{  proprity.filename }}" alt="{{  proprity.filename }}">
+                            {% else %}
+                                <img class="" src="{{ asset('images/disques/empty.jpg') }}" alt="{{  proprity.filename }}">
+                            {% endif %}
                         </div>
+                        <div class=" text1">
+                            <a class="text-dark" href="{{ path('propertyshow',{id: proprity.id,user: app.user.id }) }}" class="">{{ proprity.titre }}</a><br>
 
-                    {% endfor %}
-                </div>
+                        </div>
+                    </div>
 
+                {% endfor %}
             </div>
 
         </div>
 
-{% endblock %}
+    </div>
+
+    {% endblock %}

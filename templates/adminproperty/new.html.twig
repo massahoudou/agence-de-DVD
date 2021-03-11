@@ -1,12 +1,18 @@
 {% extends 'adminbase.html.twig'%}
 
 {% block body %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Nouveau film </li>
+    </ol>
     <div class=" ">
         <div class="">
-            <h1 class="text-danger alert-warning text-center ">Ajouter un nouveau DVD</h1><br>
-            <div class="alert-success ">
-                <div class="container">
-                    {{ include ('adminproperty/form.html.twig' , {button: 'Enregistrer'}) }}
+            <h1 style="background: linear-gradient(rgba(59, 160, 243, 0.986),rgba(36, 140, 236, 0.938));" class="alert bg-success text-secondary text-light h-50 h4">Ajouter un nouveau DVD</h1><br>
+            <div class="">
+                <div class="container bg-dark text-light shadow ">
+                  {{ include('adminproperty/form.html.twig') }}
                 </div>
 
             </div>

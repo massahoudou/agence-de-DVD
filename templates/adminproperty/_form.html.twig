@@ -1,0 +1,27 @@
+                {{ form_start(form) }}
+                    <div class="row">
+                        <div class="col-md-4">
+                            {{ form_row(form.titre) }}
+                            {{ form_row(form.prix) }}
+                            {{ form_row(form.origine) }}
+                            {{ form_row(form.datesorti_at ) }}
+                        </div>
+                        <div class="col-md-4">
+                            {{form_row(form.acteurs)}}
+                            {{ form_row(form.realisateur) }}
+                            {{ form_row(form.producteur) }}
+                            {{ form_row(form.imagefile) }}
+                        </div>
+                        <div class="col-md-4">
+                            {{ form_row(form.solde) }}
+                            {{ form_row(form.reserver) }}
+                            {{ form_row(form.top_film) }}
+                            {{ form_row(form.newfilm) }}
+                            {{ form_row(form.Categoris) }}
+                        </div>
+
+                    </div>
+                    {{form_rest(form)}}
+                        <button style="background: linear-gradient(rgba(243, 111, 59, 0.884),rgba(240, 51, 18, 0.938));"  class="btn ">{{button|default('Enregistrer') }}</button>
+                    {{form_end(form)}}
+                    <br>

@@ -3,44 +3,65 @@
 {% block title %}Hello AdminpropertyController!{% endblock %}
 
 {% block body %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Liste des films</li>
+    </ol>
+
     <div class=" w-100">
         <div class="">
-            <h1 class=" alert-danger text-secondary text-center h-50">Gérer les DVD </h1>
+            <h1 style="background: linear-gradient(rgba(59, 160, 243, 0.986),rgba(36, 140, 236, 0.938));"  class="alert bg-secondary text-secondary text-light   h4">Gerer les dvd</h1>
+           
             {% for message in app.flashes('success') %}
                 <div class="alert alert-success">
                     {{ message  }}
                 </div>
-            {% endfor %}
-                <table class="table table-warning">
-                   <thead>
-                   <tr>
-                       <td>Titre du film</td>
-                       <td>Origine</td>
-                       <td>Date de création </td>
-                       <td>Actions </td>
-                   </tr>
-                   </thead>
-                    <tbody>
-                    {% for proprity in proprieter %}
-                        <tr>
-                            <td>{{ proprity.titre }}</td>
-                            <td></td>
-                        <td>  {{ proprity.datesortiAt | date('d m-y') }}</td>
-
-                            <td>
-                                <a href="{{ path('adminedit' ,{id: proprity.id }) }}" class="btn btn-secondary">Editer </a>
-                                <form action="{{ path('admindelete', {'id' : proprity.id}) }}" class="d-inline-block" onsubmit="return confirm('Etes vous vraiment sur de vouloir supprimé')">
-                                    <button class="btn btn-danger">Suppimer</button>
-                                </form>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            <div class="text-right">
-                <a href="{{ path('adminnew ') }}" class="btn btn-danger">Ajouter un DVD</a>
-            </div>
+            {% endfor %}           
         </div>
     </div>
+    <div class="card mb-3">
+        <div class="card-header">
+            <div class="text-right">
+                <a style="background: linear-gradient(rgba(243, 111, 59, 0.884),rgba(240, 51, 18, 0.938));" href="{{ path('adminew',{id: app.user.id}) }}" class="btn btn-danger">Nouveau +</a>
+            </div></div>
+        <div class="card-body">
+          <div class="table-responsive  ">
+            <table class="table table-bordered text-light " id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr class="h6">
+                    <th class="text-secondary">Numero</th>
+                    <th class="text-primary"> Titre du film</th>
+                    <th class="text-warning">Date de création </th>
+                    <th class="text-danger">Mise a jour par </th>
+                    <th class="text-success">Editer </th>
+                    <th class="text-danger">Supp </th>
+                </tr>
+              </thead>
+              <tbody>
+   
+                {% for proprity in proprieter %}
+                        <tr>
+                            <td class="h6 bg-dark">{{ proprity.id  }}</td>
+                            <td class="h6 bg-dark">{{ proprity.titre | upper }}</td>
+                        <td  class="h6 bg-dark">  {{ proprity.datesortiAt | date() | upper }}</td>
+                            <td class="text-secondary">{{ proprity.iduser.username | upper }}</td>
+                            <td>
+                                <a href="{{ path('adminedit' ,{id: proprity.id }) }}" class="btn text-success"><i class="fa fa-edit"></i> </a>
+
+                            </td>
+
+                            <td><form action="{{ path('admindelete', {id: proprity.id}) }}" class="d-inline-block" onsubmit="return confirm('Etes vous vraiment sur de vouloir supprimé')">
+                                <button class="btn text-danger "><i class="fa fa-trash "></i></button>
+                            </form></td>
+                        </tr>
+                    {% endfor %}
+             </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+                
 
 {% endblock %}

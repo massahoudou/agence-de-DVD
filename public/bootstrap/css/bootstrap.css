@@ -5206,6 +5206,12 @@ a.badge-dark:focus, a.badge-dark.focus {
   border-color: #f5c6cb;
 }
 
+.alert-geek {
+  color:  #ED5045;
+  background-color: rgba(255, 86, 74, 0.63);
+  border-color: rgba(237, 80, 69, 0.48);
+}
+
 .alert-danger hr {
   border-top-color: #f1b0b7;
 }

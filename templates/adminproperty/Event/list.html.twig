@@ -1,0 +1,53 @@
+{% extends 'adminbase.html.twig' %}
+{% block body %}
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Liste des films</li>
+    </ol>
+    <div class=" w-100">
+        <div class="">
+            <h1 style="background: linear-gradient(rgba(59, 160, 243, 0.986),rgba(36, 140, 236, 0.938));"class="alert bg-secondary text-secondary text-light h-50 h4">Gerer les evenements</h1>
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message  }}
+                </div>
+            {% endfor %}
+            <table class=" table  table-bordered  bg-dark text-light">
+                <thead>
+                <tr class="h6">
+                    <th>N°</th>
+                    <th class="text-danger"> Titre de l' evenement</th>
+                    
+                    <th class="text-warning">Date </th>
+                    <th>Edit/Supp</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for event in events %}
+                    <tr>
+                        <td >{{ event.id }}</td>
+                        <td>{{ event.nom | upper}}</td>
+                        <td>{{ event.dateAt | date() |upper }}</td>
+                        <td>
+                            <a href="{{ path('event.edit',{id: event.id}) }}" class="text-success"><i class="fa fa-edit"></i> </a>
+                            <form action="{{ path('event.delete',{id: event.id}) }}" class="d-inline-block" onsubmit="return confirm('Etes vous vraiment sur de vouloir supprimé')">
+                                <button class="btn text-danger"><i class="fa fa-trash "></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <div class="text-left">
+                <a  style="background: linear-gradient(rgba(243, 111, 59, 0.884),rgba(240, 51, 18, 0.938));"  href="{{ path('event.new',{id: app.user.id}) }}" class="btn btn-danger">Nouveau +</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

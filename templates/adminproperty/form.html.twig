@@ -1,26 +1,45 @@
 
         {{ form_start(form) }}
-        <div class="row  ">
-            <div class="col-md-4">{{ form_row(form.titre) }}</div>
-            <div class="col-md-3">{{ form_row(form.origine) }}</div>
-            <div class="col-md-3">{{ form_row(form.prix) }}</div>
-        </div>
         <div class="row">
-            <div class="col-md-4">{{ form_row(form.acteurs) }}</div>
-            <div class="col-md-3">{{ form_row(form.realisateur) }}</div>
-            <div class="col-md-3">{{ form_row(form.producteur) }}</div>
-        </div>
-        <div class="row">
-            <div class="col-md-5">{{ form_row(form.description) }}</div>
-            <div class="col-md-2">{{ form_row(form.datesorti_at) }}</div>
-            <div class="col-md-2">{{ form_row(form.solde) }}</div>
+
+            <div class="col">
+                <div class="row  ">
+                    <div class="col-md">{{ form_row(form.titre) }}</div>
+                    <div class="col-md">{{ form_row(form.origine) }}</div>
+                    <div class="col-md">{{ form_row(form.prix) }}</div>
+
+
+                </div>
+                <div class="row">
+                    <div class="col-md">{{ form_row(form.acteurs) }}</div>
+                    <div class="col-md">{{ form_row(form.realisateur) }}</div>
+                    <div class="col-md">{{ form_row(form.producteur) }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md">{{ form_row(form.description) }}</div>
+                    <div class="col-md">{{ form_row(form.datesorti_at) }}</div>
+                    <div class="col-md">{{ form_row(form.Categoris) }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">{{ form_row(form.imagefile) }}</div>
+
+                </div>
+
+
+
+            </div>
+
+            <div class=" col-md-2">
+                <ul style="background: linear-gradient(rgba(243, 111, 59, 0.884),rgba(240, 51, 18, 0.938));" class=" my-3 alert-danger ">
+                    <li class="list-group-item h6">{{ form_row(form.solde) }}</li>
+                    <li class="list-group-item h6">{{ form_row(form.top_film) }}</li>
+                    <li class="list-group-item h6">{{ form_row(form.newfilm) }}</li>
+                </ul>
+                <div class="col h6">{{ form_rest(form) }}</div>
+            </div>
 
         </div>
-        <div class="row">
-            <div class="col-md-4">{{ form_row(form.imagefile) }}</div>
-            <div class="col-md-2">{{ form_rest(form) }}</div>
 
-        </div>
-
-        <button type="submit" class="btn btn-primary">{{ button|default('Enregistrer') }}</button>
+        <button style="background: linear-gradient(rgba(243, 111, 59, 0.884),rgba(240, 51, 18, 0.938));"  type="submit" class="btn text-light  mt-5 col-md-3">{{ button|default('Enregistrer') }}</button>
         {{ form_end(form ) }}
+        <br>

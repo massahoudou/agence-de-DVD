@@ -3,14 +3,20 @@
 {% block title %}Hello AdminpropertyController!{% endblock %}
 
 {% block body %}
-    <h1 class="alert-primary text-center">Liste desCategoris de film  </h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Categori_liste</li>
+    </ol>
+    <h1 class="alert bg-warning text-secondary text-light h-50 h4">Liste desCategoris de film  </h1>
 
     <table class="table table-striped">
         <thead>
         <tr>
             <th>Id</th>
             <th>Nom</th>
-            <th>actions</th>
+            <th>Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -19,7 +25,7 @@
                 <td>{{ categori.id }}</td>
                 <td>{{ categori.nom }}</td>
                 <td>
-                    <a class="btn btn-success " href="{{ path('categori.edit', {'id': categori.id}) }}">edit</a>
+                    <a class="btn btn-success " href="{{ path('categori.edit', {'id': categori.id}) }}"><i class="fa fa-edit"></i></a>
                 </td>
             </tr>
         {% else %}
@@ -30,6 +36,6 @@
         </tbody>
     </table>
 
-    <a class="btn btn-warning text-light" href="{{ path('categori.new') }}">Create new</a>
+    <a class="btn btn-danger  " href="{{ path('categori.new') }}">Create new</a>
 
 {% endblock %}

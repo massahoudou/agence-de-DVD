@@ -1,0 +1,25 @@
+{% extends 'adminbase.html.twig' %}
+{% block body %}
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">editer un ilm</li>
+    </ol>
+    <div class="">
+        <h1 class="alert bg-success text-secondary text-light h-50 h4">Editer  l'eveenement </h1><br>
+        <div class=" alert alert-secondary ">
+            <div class="container ">
+                <div class="">
+                    {{  include ('adminproperty/Event/form.html.twig' , {button: 'Editer'}) }}
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+{% endblock %}

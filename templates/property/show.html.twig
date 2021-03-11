@@ -3,33 +3,58 @@
 {% block body %}
 
     <div class="my-5">
-        <div class=" container">
+        <div class=" container " >
+            {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message  }}
+            </div>
+        {% endfor %} 
+        {% for message in app.flashes('alert') %}
+        <div style="background: linear-gradient(rgb(226, 81, 36),rgb(248, 45, 9))"  class="alert-danger text-center text-light ">{{ message }}</div>
+        {% endfor %}
             <div class="row">
                 <div class="col-md-7">
                     <div class=" row">
                         <div style=" width: 50%;">
-                            <img style="border-radius: 20px ;" class="w-75" src="images/disques/{{ property.filename }}" alt="{{ property.filename }}">
-                            <table class=" my-3 table table-danger">
-                                </tr>
+                            <img style="border-radius: 5px ;" class="w-75 shadow " src="images/disques/{{ property.filename }}" alt="{{ property.filename }}">
+                            <table style="background: linear-gradient(rgba(25, 5, 6),rgb(95, 37, 27))" class="text-light my-3 table table-danger table_css">
                                 <tr>
                                     <td>
                                         Mise à jour : {{ property.datecreationAt | date('d/m/yy') }}
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td >
-                                        Date de sorti :{{ property.datesortiAt | date }}
-                                    </td>
-
 
                             </table>
                         </div>
 
-                        <div class="my-5 col-md-4">
-                             <h2 class="disque-text"> Titre : {{ property.titre }}</h2>
+                        <div class="my-5 col-md-5">
+                        <table>
 
-                           <h5 class="" style="">  prix : {{ property.prix }} F CFA</h5>
-                            <button id="ouvrir" class="btn btn-danger">Contacter l'agence</button>
+                            <tr>
+                                <td>Titre : </td>
+                                 <td  style="color:rgb(43, 16, 9);font-size:16px" class="disque-text" > {{ property.titre }}</td>
+                             </tr>
+                              <tr>
+                                <td>Prix : </td>
+                                 <td class="disque-text2"> {{ property.prix }} F CFA</td>
+                              </tr>
+
+                        </table>
+                        <hr class="">
+                        {% if app.user %}
+                            <button id="ouvrir" class="btn btn-orange" style="background: linear-gradient(rgba(236, 76, 12, 0.884),rgba(240, 51, 18, 0.938));">
+                                <img src="/img/icons8_restaurant_table_25px.png" alt="">
+                                <span>Reserver</span>
+                             </button>
+                             {% else %}
+                             <div class="text-secondary">Oups vous n'est pas connectéz</div>
+<div class="text-danger">Connectez-vous pour plus d'option </div>
+                             {% endif %}
+                            <hr>
+                                  <div class="ul">
+                                        Reserver votre film et passer la chercher dans le centre le plus proche
+                                   </div>
+
 
                         </div>
                     </div>
@@ -37,18 +62,18 @@
                 </div>
 
                 <div class="col-md-5">
-                    <h2>Caractéristiques du film </h2>
-                    <table class="table table-striped">
-                        <tr>
-                            <td class="h6">Acteurs</td>
+                    <h2 class="disque-text2 h3">Caractéristiques  </h2>
+                    <table style="background: linear-gradient(rgba(25, 5, 6),rgb(95, 37, 27));font-size:12px;border-radius:5px" class="table table-bordered text-light    shadow">
+                        <tr class="" >
+                            <td class="">Acteurs</td>
                             <td>{{ property.acteurs }}</td>
                         </tr>
                         <tr>
-                            <td class="h6">realisateur</td>
+                            <td class="">realisateur</td>
                             <td>{{ property.realisateur }}</td>
                         </tr>
                         <tr>
-                            <td class="h6">Categori</td>
+                            <td class="">Categori</td>
                             <td>
                                 {% for categori in property.categoris %}
 
@@ -58,15 +83,19 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="h6">Producteur</td>
+                            <td class="">Producteur</td>
                             <td>{{ property.producteur }}</td>
                         </tr>
                         <tr>
-                            <td class="h6">Origine</td>
+                            <td class="">Origine</td>
                             <td>{{ property.origine }}</td>
                         </tr>
                         <tr>
-                            <td class="h6">Description</td>
+                            <td >Date de sorti</td>
+                            <td>{{ property.datesortiAt | date }}</td>
+                        </tr>
+                        <tr>
+                            <td class="">Description</td>
                             <td>
                                 <p>
                                     {{ property.description | nl2br }}
@@ -78,37 +107,10 @@
 
             </div>
 
-        </div>
-
-    </div>
-<div class="arr_plan"></div>
-    <div id="contactform" class="card  commende_form">
-    <div class="card-title alert alert-danger text-center text-dark h4 ">RESERVATION</div>
-        <div class=" h-50 bg-light"><img src="{{ asset('img/a9e07b3b-51bc-410e-976f-6245e6921c11_200x200 (1).png') }}"></div>
-        {{ form_start(form) }}
-        <div>
-            <div class="row">
-                <div class="col">{{ form_row(form.nom) }}</div>
-                <div class="col">{{ form_row(form.prenom) }}</div>
-            </div>
-            <div class="row">
-                <div class="col">{{ form_row(form.telephone) }}</div>
-                <div class="col">{{ form_row(form.email) }}</div>
-            </div>
-
-            {{ form_rest(form) }}
-        </div>
-        <div class="form-group">
-            <button class="btn btn-outline-danger">Valider</button> | <div id="fermer" class="btn btn-info">fermer</div>
-        </div>
-        {{ form_end(form) }}
-    </div>
-    <div class=" p2 ">
+  <div class=" p2 ">
         <div class="row">
             <div class=" mx-4 span2-div1">
                 <span class="  "> <img src="{{ asset('img/icons8_dvd_logo_25px.png') }}" alt="">  </span>
-
-
         </div>
         <div class="my-5  disque " >
             {% for proprity in propriter %}
@@ -120,7 +122,7 @@
                         {% endif %}
                     </div>
                     <div class=" text1">
-                        <a class="text-dark" href="{{ path('propertyshow',{id: proprity.id }) }}" class="">{{ proprity.titre }}</a><br>
+                        <a class="text-dark" href=" {% if app.user  %}{{ path('propertyshow',{id: proprity.id,user: app.user.id }) }}{% else %} {{ path('propertyshow',{id: proprity.id,user: 2 }) }} {% endif  %}" class="">{{ proprity.titre }}</a><br>
 
                     </div>
                 </div>
@@ -129,6 +131,67 @@
         </div>
 
     </div>
+        </div>
+
+    </div>
+    <div class="arr_plan"></div>
+        <div id="contactform" class="card login-img2  commende_form ">
+            <div class="container row ">
+                <div class="col-md-5 my-5    ">
+                    <img src="/img/a9e07b3b-51bc-410e-976f-6245e6921c11_200x200 (2).png" alt="" class="w-75">
+                </div>
+                <div class="col-md-7">
+                    <h4 class=" span1 text-center  h4 ">RESERVATION</h4>
+                          {% if app.user %}
+                          <hr class="bg-light">
+                          <div class="text-white " >
+                              <div>
+                                  <span ><i class="fas fa-user-circle fa-fw h-50"></i></span>
+                              </div>
+                              <div class="row">
+                                  <div class="form-group col-md-6">Nom :   {{ app.user.username }}</div> 
+                                  <div class="form-group">Email :  {{ app.user.email }}</div> 
+                              </div>
+                            <div class="row">
+                               <div class="form-group col-md-6">Téléphone :   {{ app.user.telephone }}</div>
+                            </div>
+                           
+                          </div>
+                         
+                          <div class="jumbotron-fluid p-4  card" style="background: linear-gradient(rgb(34, 4, 4),rgba(58, 11, 11, 0.863));">
+                            <div  class="text-white row ">
+                                <div class="col-md-6">Titre du film : </div>
+                                <div class="col-md-6"> {{ property.titre }} </div>
+                            </div>
+                            <div  class="text-light row ">
+                              <div class="col-md-6">Prix  : </div>
+                              <div class="col-md-6">  {{ property.prix }} F CFA </div>
+                          </div>
+                          </div>
+                          
+                          {{ form_start(form) }}
+                                       <input type="date" name="_date">
+                                      {{ form_row(form.message ,{'attr' : {'placeholder' : 'Laisser un mot...?'}}) }}
+                              
+                                  <div class=" form-group row col">
+                                      <button  type="submit" style="background: linear-gradient(rgba(27, 3, 3, 0.884),rgba(240, 51, 18, 0.938));" class="btn btn-orange">Valider la reservation</button>  <div id="fermer" class="btn text-primary">fermer</div>
+                                  
+                          {{ form_end(form) }}
+                            {% else %}
+                            <div>Connecter vous pour pouvoir faire des reservation .</div>
+                            <li class="nav-item li2">
+                                <a  style="background: linear-gradient(rgba(235, 126, 93, 0.884),rgba(102, 47, 15, 0.938));"class=" btn  btn-orange bt" href="{{ path('login') }}">
+                                    <span>connexion</span>
+                                    <img height="17px" src="{{ asset('img/icons8_wi-fi_connected_25px.png') }}" alt="">
+                                </a>
+                            </li>
+                          {% endif %}
+                </div>
+            </div>
+
+        </div>
+  
+</div>
 
 
 {% endblock %}

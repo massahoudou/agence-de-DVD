@@ -1,13 +1,25 @@
 {% extends 'adminbase.html.twig' %}
 
 {% block body %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">editer un ilm</li>
+    </ol>
+    <div class="">
+        <h1 class="alert bg-primary text-secondary text-light h-50 h4">Editer  le DVD </h1><br>
+        <div class=" alert alert-secondary ">
+            <div class="container ">
+                <div class="">
+                    {{  include ('adminproperty/form.html.twig' , {button: 'Editer'}) }}
+                </div>
 
-    <div class=" ">
-        <div class="">
-            <h1 class="text-secondary text-center table-active">Editer  le DVD </h1><br>
-            {{  include ('adminproperty/form.html.twig' , {button: 'Editer'}) }}
+            </div>
+
         </div>
 
     </div>
+
 
 {% endblock %}

@@ -7,11 +7,12 @@ use App\Entity\Proprietes;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\Query;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * @method Proprietes|null find($id, $lockMode = null, $lockVersion = null)
  * @method Proprietes|null findOneBy(array $criteria, array $orderBy = null)
- * @method Proprietes[]    findAll()
+ * @method Proprietes[]
  * @method Proprietes[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class ProprietesRepository extends ServiceEntityRepository
@@ -20,7 +21,6 @@ class ProprietesRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Proprietes::class);
     }
-
     /**
      * @return array|Query
      */
@@ -28,7 +28,17 @@ class ProprietesRepository extends ServiceEntityRepository
     {
             $query = $this->findVisibleQuery();
             return  $query->getQuery()
+                     ->setMaxResults(20)
                     ->getResult();
+    }
+    public function countdvd()
+    {
+        $connection = $this->getEntityManager()->getConnection();
+        $sql='SELECT Count(*) as dvd FROM proprietes';
+        $prepare = $connection->prepare($sql);
+        $prepare->execute();
+
+        return $prepare->fetch();
     }
 
     /**
@@ -73,19 +83,41 @@ class ProprietesRepository extends ServiceEntityRepository
                  ->getResult()
                                  ;
     }
+    public function findcategori($value)
+    {
+        $query = $this->findVisibleQuery();
+    }
 
     public  function findAction(PropertySearch $search)
     {
         $query =  $this->findVisibleQuery();
     }
+    public function findTop()
+    {
+        return $this->createQueryBuilder('p')
+                    ->where('p.top_film = true')
+                    ->getQuery()
+                    ->getResult();
+    }
+    public function findnew()
+    {
+        return $this->createQueryBuilder('p')
+                    ->where('p.newfilm = true')
+                    ->getQuery()
+                    ->getResult();
+    }
+
+
     /**
-     * @return \Doctrine\ORM\QueryBuilder
+     * @return QueryBuilder
      */
     private function findVisibleQuery()
     {
         return $this->createQueryBuilder('p')
-            ->where('p.solde = false');
+             ->orderBy('p.id', 'DESC');
     }
+
+
 
 
     // /**

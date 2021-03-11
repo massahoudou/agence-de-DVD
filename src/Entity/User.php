@@ -25,17 +25,51 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      */
     private $username;
-
+    /**
+     * @ORM\column(type="json")
+     */
+    private $roles =[];
     /**
      * @ORM\Column(type="string", length=255)
-     *
+     * @Assert\EqualTo(propertyPath="Confirmpassword",message="votre mot de passe ne coincide pas")
      */
     private $password;
     /**
-     * @var
-     * @Assert\EqualTo(propertyPath="password" , message="Les mot de passe de corresponde pas")
+     *@Assert\EqualTo(propertyPath="password",message="votre mot de passe ne coincide pas")
+    */
+
+    private  $Confirmpassword;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\Email()
      */
-    public $confirmpassword;
+    private $email;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $telephone;
+
+    /**
+     * @return mixed
+     */
+    public function getConfirmpassword()
+    {
+        return $this->Confirmpassword;
+    }
+
+    /**
+     * @param mixed $Confirmpassword
+     * @return User
+     */
+    public function setConfirmpassword($Confirmpassword)
+    {
+        $this->Confirmpassword = $Confirmpassword;
+        return $this;
+    }
+
+
 
     public function getId(): ?int
     {
@@ -82,9 +116,16 @@ class User implements UserInterface
      */
     public function getRoles()
     {
-        return ['ROLE_ADMIN'];
+        $roles = $this->roles;
+            $roles[]='ROLE_USER';
+        return array_unique($roles);
     }
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
 
+        return $this;
+    }
     /**
      * Returns the salt that was originally used to encode the password.
      *
@@ -105,6 +146,30 @@ class User implements UserInterface
      */
     public function eraseCredentials()
     {
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getTelephone(): ?string
+    {
+        return $this->telephone;
+    }
+
+    public function setTelephone(string $telephone): self
+    {
+        $this->telephone = $telephone;
+
+        return $this;
     }
 
 }
